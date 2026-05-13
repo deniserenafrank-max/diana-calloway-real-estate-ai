@@ -1,2 +1,722 @@
-<!-- STUB — Static landing page + intake form. See DESIGN.md for purpose and field list. -->
-<!-- Tech: plain HTML + CSS + vanilla JS. No backend. Context generation in browser. GitHub Pages. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Diana Calloway Real Estate — AI System</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy: #1a2332;
+      --navy-mid: #243040;
+      --gold: #c9a84c;
+      --gold-light: #e8c97a;
+      --cream: #f8f5ef;
+      --mid: #6b7280;
+      --border: #e5e0d8;
+      --green: #2d6a4f;
+      --red: #b91c1c;
+      --radius: 8px;
+      --mono: 'Courier New', Courier, monospace;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--cream);
+      color: var(--navy);
+      line-height: 1.6;
+    }
+
+    /* ── Hero ── */
+    .hero {
+      background: var(--navy);
+      color: white;
+      padding: 80px 24px 64px;
+      text-align: center;
+    }
+    .hero-label {
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+    .hero h1 {
+      font-size: clamp(28px, 5vw, 48px);
+      font-weight: 700;
+      line-height: 1.15;
+      max-width: 780px;
+      margin: 0 auto 20px;
+    }
+    .hero h1 span { color: var(--gold); }
+    .hero p {
+      font-size: 18px;
+      color: rgba(255,255,255,0.72);
+      max-width: 560px;
+      margin: 0 auto 36px;
+    }
+    .hero-ctas {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .btn {
+      display: inline-block;
+      padding: 14px 28px;
+      border-radius: var(--radius);
+      font-size: 15px;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      transition: opacity 0.15s;
+    }
+    .btn:hover { opacity: 0.88; }
+    .btn-gold { background: var(--gold); color: var(--navy); }
+    .btn-outline { background: transparent; color: white; border: 2px solid rgba(255,255,255,0.35); }
+
+    /* ── Section wrapper ── */
+    section { padding: 72px 24px; }
+    .container { max-width: 960px; margin: 0 auto; }
+    .section-label {
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 12px;
+      font-weight: 600;
+    }
+    h2 { font-size: clamp(22px, 3.5vw, 34px); font-weight: 700; margin-bottom: 16px; }
+    .lead { font-size: 18px; color: var(--mid); max-width: 600px; margin-bottom: 48px; }
+
+    /* ── Architecture diagram ── */
+    .arch { background: white; border: 1px solid var(--border); border-radius: 12px; padding: 40px; margin-bottom: 48px; }
+    .arch-title { font-size: 13px; font-weight: 700; color: var(--mid); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 28px; }
+
+    .flow { display: flex; flex-direction: column; gap: 0; }
+    .flow-row { display: flex; align-items: flex-start; gap: 16px; }
+    .flow-arrow { display: flex; flex-direction: column; align-items: center; gap: 0; padding: 0 8px; }
+    .flow-arrow .line { width: 2px; height: 28px; background: var(--border); }
+    .flow-arrow .chevron { color: var(--border); font-size: 14px; line-height: 1; }
+
+    .node {
+      flex: 1;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 14px 18px;
+      background: var(--cream);
+    }
+    .node.orchestrator { border-color: var(--gold); background: #fffbf0; }
+    .node-name { font-weight: 700; font-size: 14px; color: var(--navy); }
+    .node-desc { font-size: 13px; color: var(--mid); margin-top: 2px; }
+
+    .flow-branches { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; margin: 4px 0; }
+    .node.branch { background: white; }
+    .node.config { background: var(--navy); border-color: var(--navy); }
+    .node.config .node-name, .node.config .node-desc { color: rgba(255,255,255,0.85); }
+    .node.config .node-name { color: var(--gold-light); }
+
+    /* ── Intake form ── */
+    .form-section { background: white; }
+    .tab-bar { display: flex; gap: 0; border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; margin-bottom: 32px; max-width: 400px; }
+    .tab {
+      flex: 1; padding: 12px 20px; font-size: 14px; font-weight: 600;
+      background: white; color: var(--mid); border: none; cursor: pointer;
+      transition: all 0.15s;
+    }
+    .tab.active { background: var(--navy); color: white; }
+
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    @media (max-width: 600px) { .form-grid { grid-template-columns: 1fr; } }
+    .form-group { display: flex; flex-direction: column; gap: 6px; }
+    .form-group.full { grid-column: 1 / -1; }
+    label { font-size: 13px; font-weight: 600; color: var(--navy); }
+    input, select, textarea {
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      font-size: 14px;
+      color: var(--navy);
+      background: white;
+      width: 100%;
+      font-family: inherit;
+    }
+    input:focus, select:focus, textarea:focus {
+      outline: none;
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(201,168,76,0.15);
+    }
+    textarea { resize: vertical; min-height: 80px; }
+
+    .checkbox-group { display: flex; flex-wrap: wrap; gap: 8px; }
+    .checkbox-label {
+      display: flex; align-items: center; gap: 6px;
+      font-size: 13px; font-weight: normal; cursor: pointer;
+      padding: 6px 12px; border: 1px solid var(--border);
+      border-radius: 20px; background: white; transition: all 0.1s;
+    }
+    .checkbox-label:hover { border-color: var(--gold); }
+    .checkbox-label input[type=checkbox] { width: auto; accent-color: var(--gold); }
+    .checkbox-label.checked { border-color: var(--gold); background: #fffbf0; }
+
+    .generate-btn {
+      margin-top: 24px;
+      width: 100%;
+      padding: 16px;
+      background: var(--navy);
+      color: white;
+      border: none;
+      border-radius: var(--radius);
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+    .generate-btn:hover { background: var(--navy-mid); }
+
+    .output-box {
+      display: none;
+      margin-top: 24px;
+      background: #0f172a;
+      border-radius: var(--radius);
+      padding: 24px;
+      position: relative;
+    }
+    .output-box.visible { display: block; }
+    .output-box pre {
+      color: #94a3b8;
+      font-family: var(--mono);
+      font-size: 13px;
+      white-space: pre-wrap;
+      line-height: 1.7;
+    }
+    .output-box pre .hl { color: #e2e8f0; font-weight: bold; }
+    .output-box pre .gold { color: #fbbf24; }
+    .copy-btn {
+      position: absolute; top: 16px; right: 16px;
+      background: rgba(255,255,255,0.1); color: white;
+      border: none; border-radius: 6px; padding: 6px 14px;
+      font-size: 12px; font-weight: 600; cursor: pointer;
+      transition: background 0.15s;
+    }
+    .copy-btn:hover { background: rgba(255,255,255,0.2); }
+    .output-instructions {
+      margin-top: 16px;
+      padding: 14px 16px;
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+      border-radius: var(--radius);
+      font-size: 13px;
+      color: var(--green);
+      line-height: 1.6;
+    }
+
+    /* ── Features grid ── */
+    .features { background: var(--navy); color: white; }
+    .features h2 { color: white; }
+    .features .lead { color: rgba(255,255,255,0.6); }
+    .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; }
+    .feature-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 10px;
+      padding: 24px;
+    }
+    .feature-icon { font-size: 24px; margin-bottom: 12px; }
+    .feature-card h3 { font-size: 16px; font-weight: 700; color: var(--gold-light); margin-bottom: 8px; }
+    .feature-card p { font-size: 14px; color: rgba(255,255,255,0.65); line-height: 1.6; }
+
+    /* ── Quick start ── */
+    .steps { counter-reset: steps; display: flex; flex-direction: column; gap: 24px; }
+    .step { display: flex; gap: 20px; }
+    .step-num {
+      flex-shrink: 0; width: 40px; height: 40px;
+      background: var(--navy); color: var(--gold);
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      font-weight: 800; font-size: 16px;
+    }
+    .step-body h3 { font-size: 16px; font-weight: 700; margin-bottom: 4px; }
+    .step-body p { font-size: 14px; color: var(--mid); }
+    code {
+      background: var(--navy);
+      color: var(--gold-light);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-family: var(--mono);
+      font-size: 13px;
+    }
+
+    /* ── Footer ── */
+    footer {
+      background: var(--navy);
+      color: rgba(255,255,255,0.5);
+      text-align: center;
+      padding: 32px 24px;
+      font-size: 13px;
+    }
+    footer a { color: var(--gold); text-decoration: none; }
+
+    /* ── Utility ── */
+    .hidden { display: none; }
+  </style>
+</head>
+<body>
+
+<!-- Hero -->
+<div class="hero">
+  <p class="hero-label">Clief Notes Week 4 — ICM System</p>
+  <h1>A <span>six-specialist AI team</span> for boutique real estate</h1>
+  <p>Routes leads, qualifies buyers and sellers, drafts in your agents' voices, tracks transactions, and keeps long-term leads warm. Built on Claude.</p>
+  <div class="hero-ctas">
+    <a href="https://github.com/Six8Coffee/diana-calloway-real-estate-ai" class="btn btn-gold" target="_blank">View on GitHub</a>
+    <a href="#intake" class="btn btn-outline">Generate intake context ↓</a>
+  </div>
+</div>
+
+<!-- Architecture -->
+<section>
+  <div class="container">
+    <p class="section-label">System Architecture</p>
+    <h2>Six folders. One pipeline.</h2>
+    <p class="lead">Every lead enters through the orchestrator and flows to the right specialist. Structured handoff envelopes ensure nothing is lost between steps.</p>
+
+    <div class="arch">
+      <div class="arch-title">Lead flow — all three intake paths</div>
+      <div class="flow">
+
+        <div class="flow-row">
+          <div class="node orchestrator">
+            <div class="node-name">00_orchestrator</div>
+            <div class="node-desc">Reads input → identifies source + urgency → formats handoff envelope → routes to first specialist. Opus 4.7.</div>
+          </div>
+        </div>
+
+        <div class="flow-arrow"><div class="line"></div><div class="chevron">▼</div></div>
+
+        <div class="flow-row">
+          <div class="node">
+            <div class="node-name">01_lead_qualifier</div>
+            <div class="node-desc">Scores on 4 dimensions (timeline, budget, motivation, responsiveness). Creates case file. Sets next-action directive. Routes by score.</div>
+          </div>
+        </div>
+
+        <div class="flow-arrow"><div class="line"></div><div class="chevron">▼</div></div>
+
+        <div class="flow-branches">
+          <div class="node branch">
+            <div class="node-name">02_property_research</div>
+            <div class="node-desc">Neighbourhood briefs, CMAs, showing prep, listing analysis.</div>
+          </div>
+          <div class="node branch">
+            <div class="node-name">03_client_communication</div>
+            <div class="node-desc">Drafts in each agent's voice. Never sends autonomously.</div>
+          </div>
+          <div class="node branch">
+            <div class="node-name">04_transaction_coordinator</div>
+            <div class="node-desc">Deadline tracking. Option period alerts. TREC checklist.</div>
+          </div>
+          <div class="node branch">
+            <div class="node-name">05_nurture_coordinator</div>
+            <div class="node-desc">Long-game touches for not-ready leads. Graduation detection.</div>
+          </div>
+        </div>
+
+        <div class="flow-arrow"><div class="line"></div><div class="chevron">▼</div></div>
+
+        <div class="flow-branches">
+          <div class="node config">
+            <div class="node-name">_config/</div>
+            <div class="node-desc">team.md · team-standards.md · buyer/seller checklists</div>
+          </div>
+          <div class="node config">
+            <div class="node-name">_shared/</div>
+            <div class="node-desc">voices/ · cases/ — loaded by every specialist at runtime</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <p style="font-size:14px;color:var(--mid);">
+      Three intake paths: <strong>Path A</strong> — platform emails auto-routed from leads@ inbox via hourly Cloud Routine.
+      <strong>Path B</strong> — personal inboxes filtered and forwarded to leads@.
+      <strong>Path C</strong> — manual entry in Claude Code for walk-ins, calls, and open house sign-ins.
+    </p>
+  </div>
+</section>
+
+<!-- Intake form -->
+<section class="form-section" id="intake">
+  <div class="container">
+    <p class="section-label">Intake Form</p>
+    <h2>Generate a lead context block</h2>
+    <p class="lead">Fill in what you know. Copy the output and paste it into Claude Code with this project loaded. Claude will handle the rest.</p>
+
+    <div class="tab-bar">
+      <button class="tab active" onclick="switchTab('buyer')">Buyer lead</button>
+      <button class="tab" onclick="switchTab('seller')">Seller lead</button>
+    </div>
+
+    <!-- Buyer form -->
+    <div id="buyer-form">
+      <div class="form-grid">
+        <div class="form-group"><label>First name</label><input id="b-fname" type="text" placeholder="Sarah" /></div>
+        <div class="form-group"><label>Last name</label><input id="b-lname" type="text" placeholder="Mitchell" /></div>
+        <div class="form-group"><label>Phone</label><input id="b-phone" type="tel" placeholder="(512) 555-0143" /></div>
+        <div class="form-group"><label>Email</label><input id="b-email" type="email" placeholder="sarah@email.com" /></div>
+        <div class="form-group">
+          <label>Pre-approved?</label>
+          <select id="b-preapproval">
+            <option value="">— select —</option>
+            <option>Yes</option>
+            <option>In progress</option>
+            <option>No</option>
+            <option>Not stated</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Budget range</label>
+          <select id="b-budget">
+            <option value="">— select —</option>
+            <option>Under $400k</option>
+            <option>$400k – $600k</option>
+            <option>$600k – $800k</option>
+            <option>$800k – $1.2M</option>
+            <option>$1.2M+</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Timeline</label>
+          <select id="b-timeline">
+            <option value="">— select —</option>
+            <option>ASAP</option>
+            <option>1–3 months</option>
+            <option>3–6 months</option>
+            <option>6–12 months</option>
+            <option>Just exploring</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Property type</label>
+          <select id="b-type">
+            <option value="">— select —</option>
+            <option>House</option>
+            <option>Condo</option>
+            <option>Townhouse</option>
+            <option>Land</option>
+            <option>Investment</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Bedrooms needed</label>
+          <select id="b-beds">
+            <option value="">— select —</option>
+            <option>1</option><option>2</option><option>3</option><option>4</option><option>5+</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Currently</label>
+          <select id="b-current">
+            <option value="">— select —</option>
+            <option>Renting</option>
+            <option>Owning</option>
+          </select>
+        </div>
+        <div class="form-group full">
+          <label>Areas of interest</label>
+          <div class="checkbox-group" id="b-areas">
+            <label class="checkbox-label"><input type="checkbox" value="Mueller" /> Mueller</label>
+            <label class="checkbox-label"><input type="checkbox" value="Hyde Park" /> Hyde Park</label>
+            <label class="checkbox-label"><input type="checkbox" value="East Austin" /> East Austin</label>
+            <label class="checkbox-label"><input type="checkbox" value="Barton Hills" /> Barton Hills</label>
+            <label class="checkbox-label"><input type="checkbox" value="Zilker" /> Zilker</label>
+            <label class="checkbox-label"><input type="checkbox" value="Bouldin Creek" /> Bouldin Creek</label>
+            <label class="checkbox-label"><input type="checkbox" value="Circle C" /> Circle C</label>
+            <label class="checkbox-label"><input type="checkbox" value="Steiner Ranch" /> Steiner Ranch</label>
+          </div>
+        </div>
+        <div class="form-group full"><label>Why are you moving? <span style="font-weight:normal;color:var(--mid)">(optional)</span></label><textarea id="b-why" placeholder="Relocating for work, lease ending, upsizing..."></textarea></div>
+        <div class="form-group"><label>How did you hear about us?</label><input id="b-source" type="text" placeholder="Zillow, Redfin, referral, open house..." /></div>
+      </div>
+      <button class="generate-btn" onclick="generateBuyer()">Generate intake context →</button>
+    </div>
+
+    <!-- Seller form -->
+    <div id="seller-form" class="hidden">
+      <div class="form-grid">
+        <div class="form-group"><label>First name</label><input id="s-fname" type="text" placeholder="Helen" /></div>
+        <div class="form-group"><label>Last name</label><input id="s-lname" type="text" placeholder="Garcia" /></div>
+        <div class="form-group"><label>Phone</label><input id="s-phone" type="tel" placeholder="(512) 555-0199" /></div>
+        <div class="form-group"><label>Email</label><input id="s-email" type="email" placeholder="helen@email.com" /></div>
+        <div class="form-group full"><label>Property address</label><input id="s-address" type="text" placeholder="2208 Speedway, Austin TX 78705" /></div>
+        <div class="form-group">
+          <label>Looking to list</label>
+          <select id="s-timeline">
+            <option value="">— select —</option>
+            <option>ASAP</option>
+            <option>1–3 months</option>
+            <option>3–6 months</option>
+            <option>12+ months</option>
+            <option>Not sure</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Reason for selling</label>
+          <select id="s-reason">
+            <option value="">— select —</option>
+            <option>Upsizing</option>
+            <option>Downsizing</option>
+            <option>Relocating</option>
+            <option>Investment</option>
+            <option>Estate</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Already with an agent?</label>
+          <select id="s-agent">
+            <option value="">— select —</option>
+            <option>Yes</option>
+            <option>No</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Mortgage status</label>
+          <select id="s-mortgage">
+            <option value="">— select —</option>
+            <option>Own outright</option>
+            <option>Has mortgage</option>
+          </select>
+        </div>
+        <div class="form-group"><label>Target sale price <span style="font-weight:normal;color:var(--mid)">(optional)</span></label><input id="s-price" type="text" placeholder="$540,000" /></div>
+        <div class="form-group">
+          <label>Recent CMA done?</label>
+          <select id="s-cma">
+            <option value="">— select —</option>
+            <option>Yes</option>
+            <option>No</option>
+          </select>
+        </div>
+        <div class="form-group full"><label>Anything else?</label><textarea id="s-notes" placeholder="Tenants in place, needs work, estate situation, other agents involved..."></textarea></div>
+        <div class="form-group"><label>How did you hear about us?</label><input id="s-source" type="text" placeholder="Referral, Zillow, door knock..." /></div>
+      </div>
+      <button class="generate-btn" onclick="generateSeller()">Generate intake context →</button>
+    </div>
+
+    <!-- Output -->
+    <div class="output-box" id="output-box">
+      <button class="copy-btn" onclick="copyOutput()">Copy</button>
+      <pre id="output-pre"></pre>
+    </div>
+    <div class="output-instructions" id="output-instructions" style="display:none;">
+      Open Claude Code with this project loaded and paste the context above. Claude will route the lead, qualify it, and draft a first response.
+    </div>
+  </div>
+</section>
+
+<!-- Features -->
+<section class="features">
+  <div class="container">
+    <p class="section-label">What makes this different</p>
+    <h2>Built for boutique teams, not enterprise platforms</h2>
+    <p class="lead">No SaaS subscription. No monthly seat fee. Runs entirely inside Claude.</p>
+
+    <div class="feature-grid">
+      <div class="feature-card">
+        <div class="feature-icon">🎙️</div>
+        <h3>Agent voice profiles</h3>
+        <p>Every draft matches the agent who sends it. Marcus texts differently than Diana emails. The system knows the difference.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">⚡</div>
+        <h3>Three intake paths</h3>
+        <p>Platform emails, forwarded inbox emails, and manual walk-in entries all produce identical output: case file + draft + pipeline row.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📋</div>
+        <h3>TREC-native transactions</h3>
+        <p>Texas forms, option period alerts, earnest money deadlines — built around how Austin real estate actually works.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🌱</div>
+        <h3>05_nurture_coordinator</h3>
+        <p>The specialist nobody else built. Keeps not-ready leads alive for 12–24 months with value-first touches. Detects graduation signals automatically.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🔁</div>
+        <h3>Hourly Cloud Routine</h3>
+        <p>Runs automatically on Anthropic servers. Reads leads@, processes every new email, writes drafted responses to agent Gmail drafts. No one has to start it.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🧠</div>
+        <h3>Model routing at L0</h3>
+        <p>Orchestrator runs on Opus 4.7 for reasoning. Processing specialists run on Sonnet 4.6 for speed. Defined in CLAUDE.md — no config files, no API calls.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Quick start -->
+<section>
+  <div class="container">
+    <p class="section-label">Quick start</p>
+    <h2>Up and running in 30 minutes</h2>
+    <p class="lead">Claude guides you through every step. You do not need to configure anything manually.</p>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <h3>Clone the repo</h3>
+          <p>Download or clone <a href="https://github.com/Six8Coffee/diana-calloway-real-estate-ai" target="_blank" style="color:var(--gold)">diana-calloway-real-estate-ai</a> to your computer. Open it in Claude Code as your project folder.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <h3>Start onboarding</h3>
+          <p>Type <code>start onboarding</code> in Claude Code. Claude reads the CLAUDE.md and walks you through 6 steps: Gmail connection, shared inbox, Drive setup, team config, Cloud Routine creation, and a test run.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <h3>Customise your team</h3>
+          <p>Claude asks 4 questions and writes your team config automatically. Update <code>_shared/voices/</code> with your agents' actual names and communication styles.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <h3>Send a test lead</h3>
+          <p>Forward a test email to your leads@ inbox. Claude processes it, creates a case file, and writes a draft response into the assigned agent's Gmail drafts. When it works, you're live.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  Built for Clief Notes Week 4 Competition — May 2026 &nbsp;|&nbsp;
+  <a href="https://github.com/Six8Coffee/diana-calloway-real-estate-ai" target="_blank">GitHub</a> &nbsp;|&nbsp;
+  System by Diana Calloway Real Estate (fictional team — real ICM architecture)
+</footer>
+
+<script>
+  let currentTab = 'buyer';
+
+  function switchTab(tab) {
+    currentTab = tab;
+    document.querySelectorAll('.tab').forEach((t, i) => {
+      t.classList.toggle('active', (i === 0 && tab === 'buyer') || (i === 1 && tab === 'seller'));
+    });
+    document.getElementById('buyer-form').classList.toggle('hidden', tab !== 'buyer');
+    document.getElementById('seller-form').classList.toggle('hidden', tab !== 'seller');
+    document.getElementById('output-box').classList.remove('visible');
+    document.getElementById('output-instructions').style.display = 'none';
+  }
+
+  // Checkbox visual feedback
+  document.querySelectorAll('.checkbox-label input[type=checkbox]').forEach(cb => {
+    cb.addEventListener('change', () => {
+      cb.closest('.checkbox-label').classList.toggle('checked', cb.checked);
+    });
+  });
+
+  function val(id) { return (document.getElementById(id)?.value || '').trim(); }
+
+  function getChecked(groupId) {
+    return [...document.querySelectorAll(`#${groupId} input[type=checkbox]:checked`)]
+      .map(cb => cb.value).join(', ') || 'Not specified';
+  }
+
+  function generateBuyer() {
+    const name = [val('b-fname'), val('b-lname')].filter(Boolean).join(' ') || 'Unknown';
+    const phone = val('b-phone') || 'Not provided';
+    const email = val('b-email') || 'Not provided';
+    const preapproval = val('b-preapproval') || 'Not stated';
+    const budget = val('b-budget') || 'Not stated';
+    const timeline = val('b-timeline') || 'Not stated';
+    const type = val('b-type') || 'Not stated';
+    const beds = val('b-beds') || 'Not stated';
+    const current = val('b-current') || 'Not stated';
+    const areas = getChecked('b-areas');
+    const why = val('b-why') || 'Not provided';
+    const source = val('b-source') || 'Not provided';
+
+    const text = `New lead — buyer
+
+Name: ${name}
+Phone: ${phone}
+Email: ${email}
+Pre-approved: ${preapproval}
+Budget: ${budget}
+Timeline: ${timeline}
+Property type: ${type}
+Bedrooms: ${beds}
+Currently: ${current}
+Areas of interest: ${areas}
+Reason for moving: ${why}
+Source: ${source}
+
+Please qualify this lead, create a case file, and draft a first response in the appropriate agent's voice.`;
+
+    showOutput(text);
+  }
+
+  function generateSeller() {
+    const name = [val('s-fname'), val('s-lname')].filter(Boolean).join(' ') || 'Unknown';
+    const phone = val('s-phone') || 'Not provided';
+    const email = val('s-email') || 'Not provided';
+    const address = val('s-address') || 'Not provided';
+    const timeline = val('s-timeline') || 'Not stated';
+    const reason = val('s-reason') || 'Not stated';
+    const agent = val('s-agent') || 'Not stated';
+    const mortgage = val('s-mortgage') || 'Not stated';
+    const price = val('s-price') || 'Not stated';
+    const cma = val('s-cma') || 'Not stated';
+    const notes = val('s-notes') || 'None';
+    const source = val('s-source') || 'Not provided';
+
+    const text = `New lead — seller
+
+Name: ${name}
+Phone: ${phone}
+Email: ${email}
+Property address: ${address}
+Looking to list: ${timeline}
+Reason for selling: ${reason}
+Already with an agent: ${agent}
+Mortgage status: ${mortgage}
+Target sale price: ${price}
+Recent CMA done: ${cma}
+Additional notes: ${notes}
+Source: ${source}
+
+Please qualify this lead, create a case file, and draft a first response in the appropriate agent's voice.`;
+
+    showOutput(text);
+  }
+
+  function showOutput(text) {
+    const box = document.getElementById('output-box');
+    const pre = document.getElementById('output-pre');
+    pre.textContent = text;
+    box.classList.add('visible');
+    document.getElementById('output-instructions').style.display = 'block';
+    box.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  function copyOutput() {
+    const text = document.getElementById('output-pre').textContent;
+    navigator.clipboard.writeText(text).then(() => {
+      const btn = document.querySelector('.copy-btn');
+      btn.textContent = 'Copied!';
+      setTimeout(() => btn.textContent = 'Copy', 1800);
+    });
+  }
+</script>
+</body>
+</html>
