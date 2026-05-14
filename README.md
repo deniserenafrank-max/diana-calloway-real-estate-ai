@@ -3,6 +3,11 @@
 
 ---
 
+**New to the system? Start here → [Team Portal](https://six8coffee.github.io/diana-calloway-real-estate-ai/)**
+The portal is the easiest way to enter leads, check what each specialist does, and find setup and maintenance instructions in plain language.
+
+---
+
 ## What this is
 
 This folder is the brain of your team's AI system. It routes every incoming lead, qualifies it, drafts responses in the right agent's voice, tracks transactions, and keeps long-term leads warm — automatically and on demand.
