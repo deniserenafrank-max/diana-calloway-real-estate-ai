@@ -8,10 +8,10 @@
 
 You need:
 - A Google Workspace account for your team (any paid plan)
-- A Claude account with Claude Code or Cowork (Pro, Max, Team, or Enterprise)
+- A Claude account with Claude Code (Pro, Max, Team, or Enterprise)
 - Admin access to your Google Workspace
 
-Open Claude Code or Cowork in this project folder and say: **"start onboarding"**
+Open Claude Code (desktop app or web) in this project folder and say: **"start onboarding"**
 
 Claude will walk you through each step below. Do not try to do these manually — let Claude guide you.
 
@@ -154,8 +154,8 @@ Claude says "Onboarding complete. System is live."
 
 The system is operational. You do not need to run onboarding again.
 
-**To use the system manually (Path C):**
-Open Claude Code or Cowork in this folder. Describe the situation in plain English.
+**To use the system (Path C — walk-ins, calls, open houses):**
+Open Claude Code in this folder. Describe the situation in plain English.
 "New lead — phone call, buyer, James Rodriguez, 512-555-0198, looking in Hyde Park, $750k, wants to move in 90 days."
 Claude routes it, qualifies it, and drafts a response. Done.
 

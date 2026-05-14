@@ -14,7 +14,7 @@
 <!-- test_passed: false -->
 
 **If you are seeing this, run onboarding before using the system.**
-Open Claude Code or Cowork in this folder and say: "start onboarding"
+Open Claude Code (desktop app or web) in this folder and say: "start onboarding"
 
 ---
 <!-- ================================================================

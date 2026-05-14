@@ -1,5 +1,5 @@
 # Diana Calloway Real Estate — AI System
-*Your team's AI system. Built on Claude. Runs in Claude Code or Cowork.*
+*Your team's AI system. Built on Claude. Runs in Claude Code.*
 
 ---
 
@@ -17,8 +17,8 @@ If you're Jordan reading this on your first day: this is how the system works an
 
 ### What you have access to
 
-- **Claude Code** (desktop app or VS Code extension) — where you run the system manually
-- **Cowork** (optional, at cowork.anthropic.com) — where the automated routine runs hourly
+- **Claude Code** (desktop app or web) — where you run the system
+- **Cloud Routines** — run automatically in the background on Anthropic's servers, processing leads@ hourly without any action needed from you
 - This project folder — open it in Claude Code as your project
 
 ### Your morning briefing
