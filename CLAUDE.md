@@ -104,6 +104,7 @@ Read the incoming request. Match it to one specialist. Pass the full context.
 | Draft an email, text, or follow-up | `03_client_communication/` | identity + rules + handoff + _shared/voices/[agent].md |
 | Deal is under contract | `04_transaction_coordinator/` | identity + rules + handoff + _config/buyer-checklist.md or seller-checklist.md |
 | Lead not ready — nurture needed | `05_nurture_coordinator/` | identity + rules + handoff |
+| Daily briefing trigger (8am routine) | Read all `_shared/cases/` files. Identify: CRITICAL/HIGH leads with no action in 24h, nurture touches due today, contract deadlines in 7 days, unreviewed overnight leads. Send formatted email to full team via Gmail MCP. | — |
 | Request spans multiple specialists | Split into sequential tasks. Start with the first. |  |
 | Unclear — cannot route confidently | Ask one clarifying question. Then route. |  |
 

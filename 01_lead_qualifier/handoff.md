@@ -57,9 +57,9 @@ Populate every field you have data for. Mark `[TBD]` for fields that will fill i
 
 ---
 
-### Output 3 — Pipeline row
+### Output 3 — Pipeline summary block
 
-Output the structured pipeline row (see rules.md Rule 7) for the Google Sheet.
+Output the structured pipeline summary block (see rules.md Rule 7) and write it into the case file header. This is what Claude reads when the team asks for a pipeline view — no spreadsheet needed.
 
 ---
 

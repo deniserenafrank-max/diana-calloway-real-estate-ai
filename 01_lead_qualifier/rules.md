@@ -60,12 +60,12 @@ Examples:
 | Score under 4 | 05_nurture_coordinator — no full draft needed, nurture plan only |
 | Research needed for showing or listing prep | 02_property_research — after first contact drafted |
 
-## Rule 7 — Add to pipeline sheet
+## Rule 7 — Include a pipeline summary block in your output
 
-After every qualification, output a pipeline row:
+After every qualification, print a structured summary block. This makes the lead easy to scan without opening the full case file, and gives Claude the data it needs when the team asks for a pipeline view.
 
 ```
-PIPELINE ROW
+PIPELINE SUMMARY
 case_id:        [CASE_LASTNAME_I_YYYYMMDD]
 date:           [today's date]
 source:         [platform or intake path]
@@ -79,6 +79,8 @@ next_action:    [the one directive from Rule 5]
 draft_ready:    No
 notes:          [qualification score + any flags]
 ```
+
+Also write this block into the case file header section in `_shared/cases/` so it persists.
 
 ## Rule 8 — Never qualify without the full handoff envelope
 

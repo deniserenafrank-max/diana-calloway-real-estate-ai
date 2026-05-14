@@ -21,6 +21,10 @@ If you're Jordan reading this on your first day: this is how the system works an
 - **Cowork** (optional, at cowork.anthropic.com) — where the automated routine runs hourly
 - This project folder — open it in Claude Code as your project
 
+### Your morning briefing
+
+Every day at 8am, the system sends an email to the whole team. It tells you: which leads need action today, which nurture touches are due, upcoming contract deadlines in the next 7 days, and any leads that came in overnight and haven't been reviewed. You do not need to set this up — it starts automatically after onboarding.
+
 ### Your three daily tasks
 
 **1. Check leads@ inbox**
