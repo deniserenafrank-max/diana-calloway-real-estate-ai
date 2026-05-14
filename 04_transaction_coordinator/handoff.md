@@ -48,6 +48,10 @@ Routing: [Agent name] | [Diana if applicable]
 | Legal question raised | Flag to Diana — do not answer |
 | Transaction closes | Update case file, mark pipeline row as Closed, notify assigned agent |
 
+## Confidence and trail
+
+On every outgoing envelope, set `confidence` honestly — `high` if all deadlines are confirmed and no risk flags are active; `med` if a deadline is approaching or a flag is amber; `low` if a deadline has been missed or critical data is absent. Append `04_transaction_coordinator` to the `trail` from the incoming envelope.
+
 ## Back-handoff
 
 If key transaction data is missing and cannot be obtained:

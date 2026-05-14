@@ -72,6 +72,10 @@ Output the structured pipeline summary block (see rules.md Rule 7) and write it 
 | Score under 4 | 05_nurture_coordinator | Case file + "not ready" flag + suggested touch cadence |
 | Research needed before first contact | 02_property_research | Client profile + area/property + research type needed |
 
+## Confidence and trail
+
+On every outgoing envelope, set `confidence` honestly — `high` if the qualification is solid and all required fields are present; `med` if there are gaps the receiver should know about; `low` if critical information is missing and the receiver should ask before proceeding. Append `01_lead_qualifier` to the `trail` from the incoming envelope.
+
 ## Back-handoff
 
 If qualification reveals the routing was wrong (e.g., a buyer inquiry is actually a seller), return to the orchestrator:

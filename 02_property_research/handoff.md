@@ -53,6 +53,10 @@ For: [Client name] | [Lead type] | [Budget or goal]
 
 Research does not automatically trigger communication drafts. The requester specifies whether a draft follows.
 
+## Confidence and trail
+
+On every outgoing envelope, set `confidence` honestly — `high` if the research is complete and findings are solid; `med` if data was limited or some questions remain open; `low` if the brief is too thin to act on and the receiver should ask before using it. Append `02_property_research` to the `trail` from the incoming envelope.
+
 ## Back-handoff
 
 If the research request is ambiguous (no area specified, no client context, no brief type), return to the orchestrator:

@@ -47,6 +47,10 @@ Client communication is a terminal specialist for most requests — it produces 
 | Draft is a transaction update needing deadline data | 04_transaction_coordinator — pull checklist status first |
 | After first response is drafted, lead is a soft lead | 05_nurture_coordinator — set up ongoing touch plan |
 
+## Confidence and trail
+
+On every outgoing envelope, set `confidence` honestly — `high` if the draft is voice-accurate, context-complete, and ready for human review; `med` if the draft is usable but a specific gap (thin context, inferred voice) should be flagged to the agent; `low` if the draft needs significant human input before it is sendable. Append `03_client_communication` to the `trail` from the incoming envelope.
+
 ## Back-handoff
 
 If the context packet is insufficient to produce a voice-accurate draft:

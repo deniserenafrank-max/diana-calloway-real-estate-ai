@@ -54,6 +54,10 @@ Context for the drafter:
 | Lead goes 24 months without engagement | Flag to assigned agent — archive or final reactivation |
 | Assigned agent changes | Update case file and touch plan — do not miss scheduled touches during transition |
 
+## Confidence and trail
+
+On every outgoing envelope, set `confidence` honestly — `high` if the touch plan is active and contact details are current; `med` if the lead has gone quiet and the next touch is speculative; `low` if contact details are stale or engagement has dropped to zero and the agent should decide whether to continue. Append `05_nurture_coordinator` to the `trail` from the incoming envelope.
+
 ## Back-handoff
 
 Nurture coordinator does not back-handoff — it is a long-running function, not a single-pass workflow. If a fundamental problem is found with the nurture plan (no contact info, case file deleted, agent left the team), flag to the orchestrator with a note:

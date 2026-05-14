@@ -23,10 +23,22 @@ lead_type:        [Buyer / Seller / Unknown]
 assign_to:        [agent name — from team-standards.md assignment defaults]
 raw_message:      [original text from email or team member, unmodified]
 notes:            [anything else the receiving specialist needs to know]
+confidence:       [high / med / low]
+trail:            [ordered list of specialists this case has passed through]
 ```
 
-**Required fields:** source, urgency, intake_path, assign_to, raw_message
+**Required fields:** source, urgency, intake_path, assign_to, raw_message, confidence, trail
 **Optional fields:** all others — mark as "unknown" if not available. Never omit a field entirely.
+
+**Confidence rules:**
+- `high` — all required fields are populated, routing is clear.
+- `med` — proceed, but flag the gap to the receiver in `notes`.
+- `low` — critical information is missing. Receiver should ask before proceeding. On an autonomous run: back-handoff.
+
+**Trail rules:**
+- On the first envelope for a new case, set `trail: [00_orchestrator]`.
+- Every receiving specialist appends their own folder name when they produce an outgoing envelope.
+- Trail is append-only. Never edit prior entries. It is the audit log for the case.
 
 ## Missing field protocol
 
