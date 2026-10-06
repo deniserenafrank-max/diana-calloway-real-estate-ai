@@ -1,0 +1,53 @@
+{
+  "_note": "Action plans copied from Follow Up Boss. The Lead Book page has the same list; change both together. day = days after the plan started.",
+  "plans": [
+    {
+      "id": "rental-new",
+      "name": "1 - Houston Rentals - NEW Lead",
+      "fub_name": "1 - Houston Rentals - NEW Lead",
+      "kind": "Rental",
+      "starts_on_stage": "New",
+      "runs_once_per_contact": true,
+      "steps": [
+        {
+          "day": 0,
+          "type": "email",
+          "template": "rental-new-thank-you",
+          "subject": "Your rental home inquiry",
+          "from": "Denise Frank",
+          "fub_template": "#159 Thank you for your inquiry"
+        },
+        {
+          "day": 0,
+          "type": "stage",
+          "to": "Active"
+        }
+      ],
+      "fub_automation": "#38",
+      "applies_to": "Rental leads (lead type Rental inquiry)"
+    },
+    {
+      "id": "rental-active",
+      "name": "1 - Houston Rentals - Active Lead",
+      "kind": "Rental",
+      "starts_on_stage": "Active",
+      "runs_once_per_contact": true,
+      "steps": [],
+      "status": "waiting for Follow Up Boss export"
+    },
+    {
+      "id": "keep-in-touch",
+      "name": "Keeping in Contact with Leads",
+      "kind": "Buying",
+      "steps": [],
+      "status": "waiting for Follow Up Boss export"
+    },
+    {
+      "id": "stale-14mo",
+      "name": "Stale Lead Re-engagement (14 months)",
+      "kind": "Buying",
+      "steps": [],
+      "status": "waiting for Follow Up Boss export"
+    }
+  ]
+}

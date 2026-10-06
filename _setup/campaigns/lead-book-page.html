@@ -1,0 +1,451 @@
+<title>Hometown Lead Book</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bitter:wght@500;700&family=Public+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one working column (max 880px): header + counts, filter bar, contact list, campaign cadences. Detail opens as a side sheet (bottom sheet on phones). */
+:root {
+  --bg: #f3f5f2;
+  --surface: #ffffff;
+  --ink: #1c2420;
+  --muted: #5d6a63;
+  --line: #dde3de;
+  --accent: #3550b8;        /* bluebonnet */
+  --accent-soft: #e6eafa;
+  --hot: #b9441a;
+  --hot-soft: #fbe9e2;
+  --warn: #9a6a12;
+  --warn-soft: #f8efd9;
+  --ok: #2c7349;
+  --ok-soft: #e2f1e7;
+  --shade: rgba(20, 28, 24, .38);
+  --f-display: "Bitter", Georgia, "Times New Roman", serif;
+  --f-body: "Public Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --f-mono: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #141917; --surface: #1c2320; --ink: #e7ece9; --muted: #9aa8a0; --line: #2d3732;
+    --accent: #8fa3f2; --accent-soft: #232b4a; --hot: #f08a62; --hot-soft: #3a2219;
+    --warn: #e0b45a; --warn-soft: #362c16; --ok: #6cc391; --ok-soft: #18301f; --shade: rgba(0,0,0,.55);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #141917; --surface: #1c2320; --ink: #e7ece9; --muted: #9aa8a0; --line: #2d3732;
+  --accent: #8fa3f2; --accent-soft: #232b4a; --hot: #f08a62; --hot-soft: #3a2219;
+  --warn: #e0b45a; --warn-soft: #362c16; --ok: #6cc391; --ok-soft: #18301f; --shade: rgba(0,0,0,.55);
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--ink); font-family: var(--f-body); font-size: 15px; line-height: 1.5; }
+.wrap { max-width: 880px; margin: 0 auto; padding-inline: 16px; padding-block: 24px 48px; display: grid; gap: 22px; }
+h1, h2, h3 { font-family: var(--f-display); text-wrap: balance; margin: 0; }
+.eyebrow { font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+header { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 12px; }
+header h1 { font-size: 30px; line-height: 1.15; }
+.today { font-family: var(--f-mono); font-size: 13px; color: var(--muted); }
+button, select, input, textarea { font: inherit; color: inherit; }
+button { cursor: pointer; }
+.btn { border: 1px solid var(--line); background: var(--surface); border-radius: 8px; padding: 8px 14px; font-weight: 600; font-size: 14px; }
+.btn:hover { border-color: var(--accent); }
+.btn.primary { background: var(--accent); border-color: var(--accent); color: var(--surface); }
+.btn.danger { color: var(--hot); }
+.btn:focus-visible, .tab:focus-visible, .row:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.counts { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+.count { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; display: grid; gap: 2px; text-align: left; }
+.count b { font-family: var(--f-mono); font-weight: 500; font-size: 26px; font-variant-numeric: tabular-nums; line-height: 1.1; }
+.count span { font-size: 13px; color: var(--muted); }
+.count.hot b { color: var(--hot); }
+.count.warn b { color: var(--warn); }
+@media (max-width: 560px) { .counts { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.bar { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; justify-content: space-between; }
+.tabs { display: flex; flex-wrap: wrap; gap: 6px; }
+.tab { border: 1px solid var(--line); background: transparent; border-radius: 999px; padding: 6px 12px; font-size: 14px; color: var(--muted); }
+.tab[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.search { flex: 1 1 200px; min-width: 0; max-width: 280px; border: 1px solid var(--line); background: var(--surface); border-radius: 8px; padding: 8px 12px; }
+.list { display: grid; gap: 8px; }
+.group-label { margin-top: 6px; }
+.row { display: grid; grid-template-columns: 4px minmax(0, 1fr) auto; gap: 14px; align-items: center; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px 12px 0; text-align: left; width: 100%; }
+.row:hover { border-color: var(--accent); }
+.stripe { align-self: stretch; border-radius: 0 3px 3px 0; background: var(--line); }
+.stripe.HIGH, .stripe.CRITICAL { background: var(--hot); }
+.stripe.MEDIUM { background: var(--warn); }
+.who { min-width: 0; display: grid; gap: 3px; }
+.who .name { font-weight: 600; font-size: 16px; display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.who .meta, .who .next { font-size: 13px; color: var(--muted); overflow-wrap: anywhere; }
+.who .next { color: var(--ink); }
+.when { text-align: right; display: grid; gap: 4px; justify-items: end; font-family: var(--f-mono); font-size: 13px; white-space: nowrap; }
+.pill { display: inline-block; font-family: var(--f-body); font-size: 12px; font-weight: 600; padding: 1px 8px; border-radius: 999px; background: var(--accent-soft); color: var(--accent); }
+.pill.due { background: var(--hot-soft); color: var(--hot); }
+.pill.soon { background: var(--warn-soft); color: var(--warn); }
+.pill.done { background: var(--ok-soft); color: var(--ok); }
+.pill.plain { background: transparent; border: 1px solid var(--line); color: var(--muted); }
+.empty { background: var(--surface); border: 1px dashed var(--line); border-radius: 10px; padding: 22px; color: var(--muted); }
+.empty strong { color: var(--ink); display: block; margin-bottom: 4px; }
+.camps { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+@media (max-width: 720px) { .camps { grid-template-columns: minmax(0, 1fr); } }
+.camp { border-top: 3px solid var(--accent); background: var(--surface); padding: 14px; border-radius: 0 0 10px 10px; display: grid; gap: 6px; align-content: start; }
+.camp h3 { font-size: 16px; }
+.camp ol { margin: 0; padding-left: 20px; font-size: 14px; }
+.camp .n { font-family: var(--f-mono); font-size: 12px; color: var(--muted); }
+.camp.pending { border-top-color: var(--line); }
+.camp .muted, .muted { color: var(--muted); }
+.plan-sub { font-family: var(--f-body); font-size: 12px; color: var(--muted); }
+.planbox { display: grid; gap: 6px; background: var(--surface); border: 1px solid var(--line); border-left: 3px solid var(--accent); border-radius: 8px; padding: 10px 12px; font-size: 14px; }
+.planbox ol { margin: 0; padding-left: 20px; }
+.done-step { color: var(--muted); text-decoration: line-through; }
+.note { font-size: 13px; color: var(--muted); max-width: 65ch; }
+/* Sheet */
+.shade { position: fixed; inset: 0; background: var(--shade); z-index: 10; }
+.sheet { position: fixed; z-index: 11; top: 0; right: 0; bottom: 0; width: min(460px, 100%); background: var(--bg); border-left: 1px solid var(--line); overflow-y: auto; padding: calc(18px + env(safe-area-inset-top, 0px)) 18px calc(24px + env(safe-area-inset-bottom, 0px)); display: grid; gap: 16px; align-content: start; }
+@media (max-width: 560px) { .sheet { top: auto; height: 88%; width: 100%; border-left: 0; border-top: 1px solid var(--line); border-radius: 14px 14px 0 0; } }
+.sheet-head { display: flex; justify-content: space-between; align-items: start; gap: 10px; }
+.sheet-head h2 { font-size: 22px; overflow-wrap: anywhere; }
+.x { border: 0; background: transparent; font-size: 22px; line-height: 1; padding: 4px 8px; color: var(--muted); }
+.contact-lines { display: grid; gap: 6px; }
+.cline { display: flex; gap: 8px; align-items: center; justify-content: space-between; background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; }
+.cline span { font-family: var(--f-mono); font-size: 14px; overflow-wrap: anywhere; min-width: 0; user-select: all; }
+.cline button { flex: none; border: 0; background: transparent; color: var(--accent); font-weight: 600; font-size: 13px; }
+.quick { display: flex; flex-wrap: wrap; gap: 8px; }
+.form { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.form .full { grid-column: 1 / -1; }
+label { display: grid; gap: 4px; font-size: 12px; font-weight: 600; color: var(--muted); letter-spacing: .02em; }
+label input, label select, label textarea { font-size: 14px; font-weight: 400; letter-spacing: 0; border: 1px solid var(--line); background: var(--surface); border-radius: 7px; padding: 7px 9px; min-width: 0; width: 100%; }
+textarea { resize: vertical; min-height: 64px; }
+.log { display: grid; gap: 4px; font-size: 13px; }
+.log div { display: grid; grid-template-columns: 92px minmax(0, 1fr); gap: 8px; }
+.log time { font-family: var(--f-mono); color: var(--muted); }
+.status { font-size: 13px; color: var(--ok); min-height: 1.2em; }
+.status.err { color: var(--hot); }
+.confirm { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-size: 14px; }
+@media (prefers-reduced-motion: no-preference) { .sheet { animation: in .18s ease-out; } @keyframes in { from { transform: translateY(12px); opacity: .6; } } }
+</style>
+
+<div class="wrap">
+  <header>
+    <div>
+      <div class="eyebrow">Hometown Realtors of Texas</div>
+      <h1>Lead Book</h1>
+    </div>
+    <div class="today" id="today"></div>
+  </header>
+
+  <section class="counts" aria-label="Summary">
+    <button class="count hot" data-jump="due"><b id="n-due">–</b><span>Due or overdue</span></button>
+    <button class="count warn" data-jump="new"><b id="n-new">–</b><span>Not contacted yet</span></button>
+    <button class="count" data-jump="active"><b id="n-active">–</b><span>Active leads</span></button>
+    <button class="count" data-jump="sphere"><b id="n-sphere">–</b><span>Past clients &amp; sphere</span></button>
+  </section>
+
+  <div class="bar">
+    <div class="tabs" role="group" aria-label="Filter">
+      <button class="tab" data-f="due" aria-pressed="true">Due</button>
+      <button class="tab" data-f="new" aria-pressed="false">New</button>
+      <button class="tab" data-f="active" aria-pressed="false">All active</button>
+      <button class="tab" data-f="sphere" aria-pressed="false">Sphere</button>
+      <button class="tab" data-f="closed" aria-pressed="false">Closed / lost</button>
+    </div>
+    <input class="search" id="q" type="search" placeholder="Search name, property, phone" aria-label="Search contacts">
+    <button class="btn primary" id="add" hidden>Add contact</button>
+  </div>
+
+  <section class="list" id="list" aria-live="polite">
+    <div class="empty"><strong>Loading contacts…</strong>New leads from the hourly lead check show up here, along with anyone you add.</div>
+  </section>
+
+  <section style="display:grid;gap:10px">
+    <h2 style="font-size:20px">Action plans</h2>
+    <div class="camps" id="camps"></div>
+    <p class="note">Copied from Follow Up Boss. A stage change starts the matching plan, and the hourly lead check runs each step when it's due. Email steps land in your Gmail Drafts; nothing is sent until you press Send.</p>
+  </section>
+</div>
+
+<div class="shade" id="shade" hidden></div>
+<aside class="sheet" id="sheet" hidden aria-label="Contact details"></aside>
+
+<script>
+(() => {
+  // Stages follow Follow Up Boss. A stage change can start an action plan.
+  const STAGES = ["New", "Active", "Nurture", "Showing", "Under contract", "Closed", "Past client", "Lost"];
+  const TYPES = ["Rental inquiry", "Buyer", "Seller", "Past client", "Sphere", "Investor"];
+  const URG = ["CRITICAL", "HIGH", "MEDIUM", "STANDARD"];
+  // Action plans, copied from Follow Up Boss. Keep in sync with _setup/campaigns/plans.json in the repo.
+  const PLANS = {
+    "rental-new": {
+      name: "1 - Houston Rentals - NEW Lead", kind: "Rental", startsOn: "New", once: true, onlyType: "Rental inquiry",
+      steps: [
+        { day: 0, type: "email", label: "Email “Thank you for your inquiry”", subject: "Your rental home inquiry" },
+        { day: 0, type: "stage", to: "Active", label: "Change stage to Active" }
+      ]
+    },
+    "rental-active": { name: "1 - Houston Rentals - Active Lead", kind: "Rental", startsOn: "Active", once: true, onlyType: "Rental inquiry", steps: [], pending: true },
+    "keep-in-touch": { name: "Keeping in Contact with Leads", kind: "Buying", steps: [], pending: true },
+    "stale-14mo": { name: "Stale Lead Re-engagement (14 months)", kind: "Buying", steps: [], pending: true }
+  };
+  const CLOSED = new Set(["Closed", "Lost"]);
+  const SPHERE = new Set(["Past client", "Sphere"]);
+
+  const pad = n => String(n).padStart(2, "0");
+  const iso = d => d.getFullYear() + "-" + pad(d.getMonth() + 1) + "-" + pad(d.getDate());
+  const TODAY = iso(new Date());
+  const addDays = (s, n) => { const [y, m, d] = s.split("-").map(Number); return iso(new Date(y, m - 1, d + n)); };
+  const nice = s => { if (!s) return ""; const [y, m, d] = s.split("-").map(Number); return new Date(y, m - 1, d).toLocaleDateString(undefined, { month: "short", day: "numeric" }); };
+  document.getElementById("today").textContent = new Date().toLocaleDateString(undefined, { weekday: "long", month: "long", day: "numeric", year: "numeric" });
+
+  function el(tag, attrs, kids) {
+    const n = document.createElement(tag);
+    for (const [k, v] of Object.entries(attrs || {})) {
+      if (v == null || v === false) continue;
+      if (k === "class") n.className = v; else if (k === "text") n.textContent = v;
+      else if (k.startsWith("on")) n.addEventListener(k.slice(2), v); else n.setAttribute(k, v === true ? "" : v);
+    }
+    for (const c of [].concat(kids || [])) if (c != null && c !== false) n.append(c);
+    return n;
+  }
+
+  let db = null, canWrite = false, contacts = [], filter = "due", query = "", openId = null, loaded = false;
+
+  // The plan a stage change starts, if this contact hasn't already run it.
+  function planForStage(stage, c) {
+    const ran = (c && c.plansRun) || [];
+    for (const [id, p] of Object.entries(PLANS)) if (p.startsOn === stage && !(p.once && ran.includes(id)) && (!p.onlyType || (c && c.leadType) === p.onlyType)) return id;
+    return null;
+  }
+  const startPlan = id => ({ plan: id, planStep: 0, planStarted: TODAY, stepDue: TODAY });
+  function planStatus(c) {
+    const p = PLANS[c.plan];
+    if (!p) return null;
+    if (p.pending) return { text: "Waiting for emails", cls: "plain" };
+    const step = c.planStep || 0;
+    if (step >= p.steps.length) return { text: "Finished", cls: "done" };
+    return { text: "Step " + (step + 1) + " of " + p.steps.length + (c.stepDue && c.stepDue <= TODAY ? ", runs this hour" : c.stepDue ? ", " + nice(c.stepDue) : ""), cls: "" };
+  }
+
+  const isDue = c => !CLOSED.has(c.stage) && ((c.nextTouch && c.nextTouch <= TODAY) || (c.plan && PLANS[c.plan] && !PLANS[c.plan].pending && c.stepDue && c.stepDue <= TODAY && (c.planStep || 0) < PLANS[c.plan].steps.length));
+  const isSphere = c => SPHERE.has(c.stage) || SPHERE.has(c.leadType);
+  const isNew = c => !c.lastContact && !CLOSED.has(c.stage) && !isSphere(c);
+  const isActive = c => !CLOSED.has(c.stage) && !isSphere(c);
+  function whenPill(c) {
+    if (CLOSED.has(c.stage)) return el("span", { class: "pill plain", text: c.stage });
+    if (!c.nextTouch) return null;
+    if (c.nextTouch < TODAY) return el("span", { class: "pill due", text: "Follow up · overdue " + nice(c.nextTouch) });
+    if (c.nextTouch === TODAY) return el("span", { class: "pill due", text: "Follow up today" });
+    if (c.nextTouch <= addDays(TODAY, 3)) return el("span", { class: "pill soon", text: "Follow up " + nice(c.nextTouch) });
+    return el("span", { class: "pill plain", text: "Follow up " + nice(c.nextTouch) });
+  }
+  const urgRank = u => ({ CRITICAL: 0, HIGH: 1, MEDIUM: 2, STANDARD: 3 })[u] ?? 4;
+  const firstDate = c => [c.nextTouch, c.stepDue].filter(Boolean).sort()[0] || "9999";
+  const sortFn = (a, b) => firstDate(a).localeCompare(firstDate(b)) || urgRank(a.urgency) - urgRank(b.urgency) || (a.name || "").localeCompare(b.name || "");
+
+  function render() {
+    document.getElementById("n-due").textContent = loaded ? contacts.filter(isDue).length : "–";
+    document.getElementById("n-new").textContent = loaded ? contacts.filter(isNew).length : "–";
+    document.getElementById("n-active").textContent = loaded ? contacts.filter(isActive).length : "–";
+    document.getElementById("n-sphere").textContent = loaded ? contacts.filter(isSphere).length : "–";
+    document.querySelectorAll(".tab").forEach(t => t.setAttribute("aria-pressed", String(t.dataset.f === filter)));
+    const list = document.getElementById("list");
+    if (!loaded) return;
+    const q = query.trim().toLowerCase();
+    const pick = { due: isDue, new: isNew, active: isActive, sphere: isSphere, closed: c => CLOSED.has(c.stage) }[filter];
+    const rows = contacts.filter(pick).filter(c => !q || [c.name, c.property, c.phone, c.email, c.source].join(" ").toLowerCase().includes(q)).sort(sortFn);
+    list.replaceChildren();
+    if (!contacts.length) {
+      list.append(el("div", { class: "empty" }, [el("strong", { text: "No contacts yet" }), "New leads from the hourly lead check land here. Use Add contact for past clients, referrals and walk-ins."]));
+      return;
+    }
+    if (!rows.length) {
+      const msg = { due: "Nothing is due today.", new: "Everyone has been contacted.", active: "No active leads.", sphere: "No past clients or sphere contacts yet.", closed: "No closed or lost contacts." }[filter];
+      list.append(el("div", { class: "empty" }, [el("strong", { text: q ? "No matches" : msg })]));
+      return;
+    }
+    for (const c of rows) {
+      const ps = planStatus(c);
+      list.append(el("button", { class: "row", onclick: () => openSheet(c.id) }, [
+        el("span", { class: "stripe " + (c.urgency || "") }),
+        el("span", { class: "who" }, [
+          el("span", { class: "name" }, [c.name || "Unnamed", el("span", { class: "pill plain", text: c.stage || "New" })]),
+          el("span", { class: "meta", text: [c.leadType, c.property, c.source].filter(Boolean).join(" · ") }),
+          c.nextAction ? el("span", { class: "next", text: c.nextAction }) : null
+        ]),
+        el("span", { class: "when" }, [
+          whenPill(c),
+          ps ? el("span", { class: "pill " + ps.cls, title: PLANS[c.plan].name, text: PLANS[c.plan].name.replace(/^1 - Houston Rentals - /, "Rentals: ") }) : null,
+          ps ? el("span", { class: "plan-sub", text: ps.text }) : null
+        ])
+      ]));
+    }
+  }
+
+  function renderPlans() {
+    const box = document.getElementById("camps");
+    const order = Object.entries(PLANS);
+    order.forEach(([id, p], i) => {
+      const steps = p.pending
+        ? [el("li", { class: "muted", text: "Emails and timing coming from Follow Up Boss" })]
+        : p.steps.map(s => el("li", { text: "Day " + s.day + ": " + s.label + (s.subject ? " (subject “" + s.subject + "”)" : "") }));
+      box.append(el("div", { class: "camp" + (p.pending ? " pending" : "") }, [
+        el("div", { class: "n", text: (i + 1) + " · " + p.kind + (p.startsOn ? " · starts when stage changes to " + p.startsOn : "") }),
+        el("h3", { text: p.name }),
+        el("ol", {}, steps),
+        i < order.length - 1 ? el("div", { class: "n", text: "Then → " + order[i + 1][1].name }) : null
+      ]));
+    });
+  }
+
+  // ---------- Sheet ----------
+  const sheet = document.getElementById("sheet"), shade = document.getElementById("shade");
+  function closeSheet() { sheet.hidden = true; shade.hidden = true; openId = null; }
+  shade.addEventListener("click", closeSheet);
+  document.addEventListener("keydown", e => { if (e.key === "Escape" && !sheet.hidden) closeSheet(); });
+
+  function field(id, label, value, opts) {
+    opts = opts || {};
+    let input;
+    if (opts.options) {
+      input = el("select", { id }, opts.options.map(o => { const [v, t] = Array.isArray(o) ? o : [o, o]; const op = el("option", { value: v, text: t }); if (v === value) op.selected = true; return op; }));
+    } else if (opts.area) {
+      input = el("textarea", { id, rows: 3 }); input.value = value || "";
+    } else {
+      input = el("input", { id, type: opts.type || "text" }); input.value = value || "";
+    }
+    if (!canWrite) input.disabled = true;
+    return el("label", { class: opts.full ? "full" : null }, [label, input]);
+  }
+  function copyLine(text) {
+    if (!text) return null;
+    return el("div", { class: "cline" }, [el("span", { text }), el("button", { type: "button", onclick: async ev => {
+      const b = ev.currentTarget;
+      try { await navigator.clipboard.writeText(text); b.textContent = "Copied"; }
+      catch { const r = document.createRange(); r.selectNodeContents(b.previousSibling); const s = getSelection(); s.removeAllRanges(); s.addRange(r); b.textContent = "Selected"; }
+      setTimeout(() => { b.textContent = "Copy"; }, 1500);
+    }, text: "Copy" })]);
+  }
+
+  function openSheet(id, msg) {
+    openId = id;
+    const isNewRec = id === null;
+    const c = isNewRec ? { stage: "New", leadType: "Rental inquiry", urgency: "MEDIUM", source: "Manual entry", plansRun: [] } : contacts.find(x => x.id === id);
+    if (!c) return closeSheet();
+    const status = el("div", { class: "status", role: "status" });
+    const say = (t, err) => { status.textContent = t; status.className = "status" + (err ? " err" : ""); };
+    if (msg) say(msg);
+    const reopen = async m => { await new Promise(r => setTimeout(r, 300)); if (openId === c.id) openSheet(c.id, m); };
+    const fail = e => say("Couldn't save: " + (e && e.message ? e.message : "try again."), true);
+
+    const form = el("div", { class: "form" }, [
+      field("f-name", "Name", c.name, { full: true }),
+      field("f-phone", "Phone", c.phone, { type: "tel" }),
+      field("f-email", "Email", c.email, { type: "email" }),
+      field("f-type", "Lead type", c.leadType, { options: TYPES }),
+      field("f-stage", "Stage", c.stage, { options: STAGES }),
+      field("f-urg", "Urgency", c.urgency, { options: URG }),
+      field("f-next", "Your next follow-up", c.nextTouch, { type: "date" }),
+      field("f-src", "Source", c.source, { full: true }),
+      field("f-prop", "Property or area", c.property, { full: true }),
+      field("f-action", "Next step", c.nextAction, { area: true, full: true }),
+      field("f-notes", "Notes", c.notes, { area: true, full: true })
+    ]);
+    const val = fid => sheet.querySelector("#" + fid).value.trim();
+    const collect = () => ({
+      name: val("f-name"), phone: val("f-phone"), email: val("f-email"), leadType: val("f-type"), stage: val("f-stage"),
+      urgency: val("f-urg"), nextTouch: val("f-next") || null, source: val("f-src"),
+      property: val("f-prop"), nextAction: val("f-action"), notes: val("f-notes")
+    });
+
+    async function save() {
+      const data = collect();
+      if (!data.name) return say("Add a name before saving.", true);
+      const stageChanged = isNewRec || data.stage !== c.stage;
+      const planId = stageChanged ? planForStage(data.stage, { ...c, ...data }) : null;
+      const log = [];
+      if (stageChanged && !isNewRec) log.push({ d: TODAY, t: "Stage changed to " + data.stage });
+      if (planId) Object.assign(data, startPlan(planId)), log.push({ d: TODAY, t: "Action plan started: " + PLANS[planId].name });
+      try {
+        if (isNewRec) {
+          await db.collection("contacts").doc().set({ ...data, plansRun: [], lastContact: null, created: TODAY, log: [{ d: TODAY, t: "Added by hand" }].concat(log) });
+          closeSheet();
+        } else {
+          if (log.length) data.log = log.reverse().concat(c.log || []).slice(0, 60);
+          await db.doc("contacts/" + c.id).update(data);
+          reopen(planId ? "Saved. " + PLANS[planId].name + " starts with the next hourly run." : "Saved");
+        }
+      } catch (e) { fail(e); }
+    }
+    async function contacted() {
+      const patch = { lastContact: TODAY, nextTouch: null, log: [{ d: TODAY, t: "Contacted" }].concat(c.log || []).slice(0, 60) };
+      try { await db.doc("contacts/" + c.id).update(patch); reopen("Logged as contacted today."); } catch (e) { fail(e); }
+    }
+    async function snooze(n) {
+      try { await db.doc("contacts/" + c.id).update({ nextTouch: addDays(TODAY, n) }); reopen("Follow-up set for " + nice(addDays(TODAY, n)) + "."); } catch (e) { fail(e); }
+    }
+    async function stopPlan() {
+      const p = PLANS[c.plan];
+      try { await db.doc("contacts/" + c.id).update({ plan: null, stepDue: null, plansRun: [...new Set([...(c.plansRun || []), c.plan])], log: [{ d: TODAY, t: "Action plan stopped: " + (p ? p.name : c.plan) }].concat(c.log || []).slice(0, 60) }); reopen("Action plan stopped."); } catch (e) { fail(e); }
+    }
+    const delWrap = el("div", { class: "confirm" });
+    const delBtn = el("button", { class: "btn danger", type: "button", text: "Delete contact", onclick: () => {
+      delWrap.replaceChildren("Delete this contact for good?",
+        el("button", { class: "btn danger", type: "button", text: "Delete", onclick: async () => { try { await db.doc("contacts/" + c.id).delete(); closeSheet(); } catch (e) { say("Couldn't delete.", true); } } }),
+        el("button", { class: "btn", type: "button", text: "Keep", onclick: () => delWrap.replaceChildren(delBtn) }));
+    } });
+    delWrap.append(delBtn);
+
+    const p = PLANS[c.plan], ps = planStatus(c);
+    const planBox = !isNewRec ? el("div", { class: "planbox" }, [
+      el("div", { class: "eyebrow", text: "Action plan" }),
+      p ? el("strong", { text: p.name }) : el("span", { class: "muted", text: (c.plansRun || []).length ? "None running. Finished: " + c.plansRun.map(x => PLANS[x] ? PLANS[x].name : x).join(", ") : "None running" }),
+      ps ? el("span", { class: "muted", text: ps.text }) : null,
+      p && !p.pending ? el("ol", {}, p.steps.map((s, i) => el("li", { class: i < (c.planStep || 0) ? "done-step" : null, text: "Day " + s.day + ": " + s.label }))) : null,
+      p && canWrite ? el("div", {}, [el("button", { class: "btn", type: "button", text: "Stop this plan", onclick: stopPlan })]) : null
+    ]) : el("p", { class: "note", style: "margin:0", text: "A new contact starts at stage New, which runs “1 - Houston Rentals - NEW Lead” on the next hourly run." });
+
+    sheet.replaceChildren(
+      el("div", { class: "sheet-head" }, [
+        el("div", {}, [el("div", { class: "eyebrow", text: isNewRec ? "New contact" : [c.stage, c.caseId].filter(Boolean).join(" · ") }), el("h2", { text: c.name || "Add a contact" })]),
+        el("button", { class: "x", type: "button", "aria-label": "Close", text: "×", onclick: closeSheet })
+      ]),
+      isNewRec ? null : el("div", { class: "contact-lines" }, [copyLine(c.phone), copyLine(c.email)]),
+      !isNewRec && canWrite ? el("div", { class: "quick" }, [
+        el("button", { class: "btn primary", type: "button", text: "Mark contacted today", onclick: contacted }),
+        el("button", { class: "btn", type: "button", text: "Follow up in 3 days", onclick: () => snooze(3) }),
+        el("button", { class: "btn", type: "button", text: "In 1 week", onclick: () => snooze(7) })
+      ]) : null,
+      !isNewRec && c.draftId && !c.lastContact ? el("p", { class: "note", style: "margin:0", text: "A reply draft is waiting in your Gmail Drafts. Send it, then tap Mark contacted today." }) : null,
+      planBox,
+      form,
+      canWrite ? el("div", { class: "quick" }, [el("button", { class: "btn primary", type: "button", text: isNewRec ? "Add contact" : "Save changes", onclick: save })]) : null,
+      status,
+      !isNewRec && (c.log || []).length ? el("div", {}, [el("div", { class: "eyebrow", text: "History", style: "margin-bottom:6px" }), el("div", { class: "log" }, (c.log || []).map(l => el("div", {}, [el("time", { text: nice(l.d) }), el("span", { text: l.t })])))]) : null,
+      !isNewRec && canWrite ? delWrap : null
+    );
+    sheet.hidden = false; shade.hidden = false;
+    sheet.scrollTop = 0;
+  }
+
+  // ---------- Wiring ----------
+  document.querySelectorAll(".tab").forEach(t => t.addEventListener("click", () => { filter = t.dataset.f; render(); }));
+  document.querySelectorAll("[data-jump]").forEach(t => t.addEventListener("click", () => { filter = t.dataset.jump; render(); }));
+  document.getElementById("q").addEventListener("input", e => { query = e.target.value; render(); });
+  document.getElementById("add").addEventListener("click", () => openSheet(null));
+  renderPlans();
+
+  (async () => {
+    const [dbNs, user] = await Promise.all([window.claude?.use?.("db"), window.claude?.use?.("user")]).catch(() => [null, null]);
+    db = dbNs;
+    if (!db) {
+      document.getElementById("list").replaceChildren(el("div", { class: "empty" }, [el("strong", { text: "Contacts can't load here" }), "Open the Lead Book from claude.ai while signed in to see your contacts."]));
+      return;
+    }
+    canWrite = user ? (await user.canEdit()) !== false : true;
+    document.getElementById("add").hidden = !canWrite;
+    db.collection("contacts").onSnapshot(snap => {
+      contacts = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+      loaded = true;
+      render();
+    }, () => {
+      document.getElementById("list").replaceChildren(el("div", { class: "empty" }, [el("strong", { text: "Contacts stopped updating" }), "Reload the page to reconnect."]));
+    });
+  })();
+})();
+</script>
