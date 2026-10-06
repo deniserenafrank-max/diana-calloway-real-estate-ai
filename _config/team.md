@@ -19,11 +19,13 @@ admin: denise@hometownrealtorsoftexas.com         # Google Workspace admin + con
 
 | Name | Role | Email | Phone |
 |---|---|---|---|
-| Denise Frank | Broker / lead agent | denise@hometownrealtorsoftexas.com | (832) 662-0475 |
-| Keith Knowlton | Agent | keith@hometownrealtorsoftexas.com | (832) 662-0475 |
+| Denise Frank | Broker / lead agent | denise@hometownrealtorsoftexas.com | (832) 661-0475 |
+| Keith Knowlton | Agent | keith@hometownrealtorsoftexas.com | (832) 661-0475 |
 
-Phone note: (832) 662-0475 is the team's Follow Up Boss number. Use it as the
-contact number in every drafted client reply. It is not a personal mobile.
+Phone note: (832) 661-0475 is the Hometown Realtors of Texas brokerage line
+(it is not the Follow Up Boss number and not a personal mobile). Use it as the
+contact number in every drafted client reply and every signature. Do not use
+any other number (older numbers are retired).
 
 ---
 
@@ -36,31 +38,31 @@ contact number in every drafted client reply. It is not a personal mobile.
 | Personal referrals | Denise Frank | Denise calls referrals directly |
 | Overflow / assist | Keith Knowlton | Only when Denise reassigns in the case file |
 
-Voice profiles: `_shared/voices/` currently holds the template agents only
-(diana, marcus, priya, jordan). Until `denise.md` and `keith.md` exist, the
-Client Communication specialist uses `diana.md` as the lead-agent voice for
-Denise and `marcus.md` for Keith. Replace these with real voice profiles
-before relying on drafts for tone.
+Voice profiles: `_shared/voices/denise.md` (Denise) and `_shared/voices/keith.md`
+(Keith). The Client Communication specialist loads the assigned agent's file.
+Both are starters: `denise.md` is a STARTER profile built from the template and
+Denise's stated brand, and `keith.md` is a PLACEHOLDER. Replace the samples with
+real emails each person has sent to leads before relying on drafts for tone.
 
 ---
 
 ## Hard stop contacts
 
 Any of these situations: pull Denise in immediately.
-- Offer above $1.2M
+- Offer above $1.2M (template value — Denise to confirm)
 - Divorce, estate, or foreclosure
 - Client threatening to leave
 - Legal ambiguity (boundary, title, undisclosed defects)
 - Any media inquiry
 
-Denise's number: **(832) 662-0475**
+Denise's number: **(832) 661-0475** (brokerage line)
 
 ---
 
 ## Pipeline sheet
 
 ```
-sheet_name: Diana's Team Pipeline
+sheet_name: Diana's Team Pipeline   # the sheet's CURRENT title (left over from the template). Rename the sheet (e.g. "Denise HTR Pipeline") and update this line at the same time.
 sheet_id: 1tS5wb-WN7zmPpmLMY9cf093hlRl2v07mgq6Yrm0GCbA
 sheet_url: https://docs.google.com/spreadsheets/d/1tS5wb-WN7zmPpmLMY9cf093hlRl2v07mgq6Yrm0GCbA/edit
 columns: case_id | date | source | prospect_name | contact | lead_type | assigned_agent | urgency | status | next_action | draft_ready | notes | closed_date

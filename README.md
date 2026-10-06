@@ -1,84 +1,72 @@
-# Diana Calloway Real Estate — AI System
-*Your team's AI system. Built on Claude. Runs in Claude Code.*
+# Denise HTR — AI System for Hometown Realtors of Texas
+*Hometown Realtors of Texas LLC's AI lead system. Built on Claude. Runs in Claude Code and Claude scheduled tasks.*
 
 ---
 
-**New to the system? Start here → [Team Portal](https://six8coffee.github.io/diana-calloway-real-estate-ai/)**
-The portal is the easiest way to enter leads, check what each specialist does, and find setup and maintenance instructions in plain language.
+**Team portal:** `index.html` in this repo is a plain-language portal for entering leads and finding setup and maintenance instructions. Open it in a browser.
 
 ---
 
 ## What this is
 
-This folder is the brain of your team's AI system. It routes every incoming lead, qualifies it, drafts responses in the right agent's voice, tracks transactions, and keeps long-term leads warm — automatically and on demand.
+This repo is the brain of Hometown's AI system. It routes every incoming lead, qualifies it, drafts responses in the right agent's voice, tracks transactions, and keeps long-term leads warm, automatically and on demand.
 
-It is not a chatbot. It is a structured team of AI specialists, each with a defined role, rules, and examples. You give it a lead. It gives you a case file, a response draft, and a next-action directive.
+It is not a chatbot. It is a structured set of AI specialists, each with a defined role, rules, and examples. You give it a lead. It gives you a case file, a response draft, and one next action.
+
+**Team:** Denise Frank (Broker, handles all leads by default) and Keith Knowlton (Agent, handles leads Denise reassigns to him). Details live in `_config/team.md`.
 
 ---
 
-## Jordan's day-one guide
+## Day-one guide (Denise and Keith)
 
-If you're Jordan reading this on your first day: this is how the system works and how you use it.
+### What runs automatically
 
-### What you have access to
-
-- **Claude Code** (desktop app or web) — where you run the system
-- **Cloud Routines** — run automatically in the background on Anthropic's servers, processing leads@ hourly without any action needed from you
-- This project folder — open it in Claude Code as your project
-
-### Your morning briefing
-
-Every day at 8am, the system sends an email to the whole team. It tells you: which leads need action today, which nurture touches are due, upcoming contract deadlines in the next 7 days, and any leads that came in overnight and haven't been reviewed. You do not need to set this up — it starts automatically after onboarding.
+- **Hourly lead processor**, a scheduled task, at about :02 past each hour, Mon–Fri 7am–9pm and Sat–Sun 8am–6pm (Central). It reads new mail sent to leads@hometownrealtorsoftexas.com, creates case files, and saves draft replies to Denise's Gmail Drafts. It never sends.
+- **Morning briefing**, a scheduled task, at 7:56am daily. It emails Denise and Keith what needs action today: hot leads with no follow-up, nurture touches due, contract deadlines in the next 7 days, and leads processed in the last 24 hours that haven't been reviewed.
 
 ### Your three daily tasks
 
-**1. Check leads@ inbox**
+**1. Review the drafts in Gmail.**
+Every lead reply lands in Denise's Drafts. Drafts for Keith's leads start with "[For Keith]". No draft goes out without a human check:
+- Does it sound like the person it's from?
+- Does it end with one specific next step? (If it ends with "let me know if you have questions", it's wrong.)
+- Does it promise anything about price, timeline or outcome? (It must not.)
 
-The hourly routine handles most of this automatically. But if you're in early or the routine missed something, open Claude Code with this project loaded and say:
+If it passes, send it. If it's wrong, tell Claude what to fix.
+
+**2. Enter walk-ins, calls and open-house sign-ins yourself (Path C).**
+Don't wait for the hourly run. Open Claude Code with this repo and type, for example:
+
+> "New lead — just spoke to a buyer named Sarah Mitchell, (281) 555-0142, looking in Magnolia, pre-approved, wants to move by spring."
+
+Claude qualifies the lead, creates a case file, and drafts a first response.
+
+**3. Check leads@ if something seems missed.**
 
 > "Check leads@ and process any new emails."
-
-Claude will read the inbox, route each lead through the qualifier, and draft a response for the assigned agent. Your job is to review the drafts before they go out.
-
-**2. Handle walk-ins, calls, and open house sign-ins (Path C)**
-
-When someone walks into the office, calls, or signs your open house sheet — don't wait for the routine. Type a description directly in Claude Code:
-
-> "New lead — just spoke to a buyer named Priya Johnson, 512-555-0177, looking in Mueller, pre-approved $680k, wants to move by August."
-
-Claude will qualify the lead, create a case file, and draft a first response within seconds. Review it, confirm it sounds right, and send.
-
-**3. Review drafted responses before they go out**
-
-No draft leaves without a human check. Your job in the review:
-- Does it sound like the agent it's from? (Marcus is different from Diana — check the voice)
-- Does it have a specific next step? (If it ends with "let me know if you have questions" — it's wrong)
-- Are there any promises you can't keep? (No price commitments, no timeline guarantees)
-
-If it passes: send it from the agent's Gmail. If it's wrong: tell Claude what to fix.
 
 ---
 
 ## How a lead flows through the system
 
 ```
-Lead arrives (email / walk-in / phone)
+Lead arrives (leads@ email / walk-in / phone)
         ↓
 00_orchestrator — reads it, identifies source and urgency, routes it
         ↓
-01_lead_qualifier — scores it, creates case file, sets next action
+01_lead_qualifier — scores it, creates the case file, sets the next action
         ↓
-        ├→ Score 7+: 03_client_communication — drafts first response
+        ├→ Score 7+: 03_client_communication — drafts the first response
         ├→ Score 4–6: 03_client_communication (brief draft) + 05_nurture_coordinator (touch plan)
         └→ Score under 4: 05_nurture_coordinator (nurture plan, no immediate draft)
-        
+
 (If research is needed first)
         ↓
-02_property_research — neighbourhood brief, CMA, or showing prep
+02_property_research — area brief, CMA, or showing prep
         ↓
-03_client_communication — draft incorporating research
+03_client_communication — draft incorporating the research
 
-(If lead converts and goes under contract)
+(If the lead goes under contract)
         ↓
 04_transaction_coordinator — deadline tracking, option period alerts, checklist
 ```
@@ -88,36 +76,36 @@ Lead arrives (email / walk-in / phone)
 ## The folder map
 
 ```
-agency-system/
-├── CLAUDE.md                    ← The system's brain (two modes: onboarding / operational)
+diana-calloway-real-estate-ai/
+├── CLAUDE.md                    ← The system's brain (onboarding mode / operational mode)
 ├── README.md                    ← This file
+├── index.html                   ← Team portal (landing-page/index.html is a copy)
 │
 ├── 00_orchestrator/             ← Front door — routes everything
 ├── 01_lead_qualifier/           ← Scores leads, creates case files
-├── 02_property_research/        ← Neighbourhood briefs, CMAs, showing prep
+├── 02_property_research/        ← Area briefs, CMAs, showing prep
 ├── 03_client_communication/     ← Drafts all client-facing messages
 ├── 04_transaction_coordinator/  ← Tracks contracts, deadlines, alerts
 ├── 05_nurture_coordinator/      ← Long-term lead management
 │
 ├── _config/
-│   ├── team.md                  ← Your team's names, emails, assignments
-│   ├── team-standards.md        ← Diana's philosophy, hard stops, quality floor
-│   ├── buyer-checklist.md       ← Full TREC buyer transaction checklist
-│   └── seller-checklist.md      ← Full TREC seller transaction checklist
+│   ├── team.md                  ← Names, emails, phone, assignment rules
+│   ├── team-standards.md        ← Quality bar (the Denise HTR test), hard stops
+│   ├── buyer-checklist.md       ← TREC buyer transaction checklist
+│   └── seller-checklist.md      ← TREC seller transaction checklist
 │
 ├── _setup/
-│   ├── onboarding-checklist.md  ← Run once to configure Gmail, Drive, and the routine
-│   └── routine-prompt.md        ← Documentation for the hourly Cloud Routine
+│   ├── onboarding-checklist.md  ← One-time setup steps
+│   ├── routine-prompt.md        ← Plain-language description of the scheduled tasks
+│   └── routines/                ← The exact prompts the scheduled tasks run
 │
 └── _shared/
     ├── voices/
-    │   ├── diana.md             ← Diana's voice profile
-    │   ├── marcus.md            ← Marcus's voice profile
-    │   ├── priya.md             ← Priya's voice profile
-    │   └── jordan.md            ← Jordan's voice profile
+    │   ├── denise.md            ← Denise's voice profile (starter — replace samples with real emails)
+    │   └── keith.md             ← Keith's voice profile (placeholder)
     └── cases/
         ├── CASE_TEMPLATE.md     ← Template for new lead/deal files
-        └── [CASE_*.md]          ← Individual case files (one per lead or deal)
+        └── YYYY-NNN-agent-lastname.md ← One case file per lead or deal
 ```
 
 ---
@@ -129,7 +117,8 @@ agency-system/
 | New walk-in buyer | "New lead — [name], buyer, [phone], looking in [area], [budget if known]" |
 | New seller inquiry | "New lead — [name], seller, [address], thinking about listing [timeline]" |
 | Before a showing | "Prep me for a showing at [address]. Buyers are [client name], [profile]." |
-| Draft a follow-up | "Draft a follow-up text from Marcus to [name] about [property/situation]." |
+| Draft a follow-up | "Draft a follow-up text from Denise to [name] about [property/situation]." |
+| Hand a lead to Keith | "Reassign case [case_id] to Keith and draft his intro." |
 | Transaction update | "What's the status on the Rodriguez transaction? What's due this week?" |
 | Check nurture queue | "Which nurture leads have a touch due this week?" |
 
@@ -137,29 +126,23 @@ agency-system/
 
 ## What Claude will never do
 
-- Send anything without your review
+- Send anything to a client without your review
 - Make price commitments or timeline guarantees
-- Handle a hard-stop situation without involving Diana directly
-- Process a lead without creating a case file first
+- Handle a hard-stop situation without involving Denise directly
+- Process a lead without creating a case file
 
 ---
 
 ## If something looks wrong
 
-If a draft sounds off — wrong voice, wrong length, too pushy, too generic — tell Claude:
+If a draft sounds off (wrong voice, wrong length, too pushy, too generic), tell Claude:
 
-> "This doesn't sound like Marcus. Rewrite it — shorter, less formal, more direct."
+> "This doesn't sound like me. Rewrite it — shorter, warmer, more direct."
 
-The system responds to feedback. You do not need to know how it works to fix it.
+The system responds to feedback. You don't need to know how it works to fix it.
 
 ---
 
-## Questions?
+## Privacy note
 
-Ask Claude. It knows this system better than any other tool you have.
-
-> "How does the option period alert work?"
-> "What's the difference between Path A and Path C?"
-> "Which agent should I assign this to?"
-
-If Claude doesn't know, it will tell you what it would need to find out.
+Case files contain prospects' names, phone numbers and emails. This repo is a public fork, and GitHub does not allow a public fork to be made private. Move the system to a private repo before real leads are saved here.

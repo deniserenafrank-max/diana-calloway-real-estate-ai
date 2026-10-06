@@ -1,5 +1,5 @@
 # Case File — [CASE_ID]
-*Format: YYYY-NNN-agent-lastname (e.g. 2026-047-marcus-mitchell)*
+*File name: `_shared/cases/YYYY-NNN-agent-lastname.md` (e.g. `2026-001-denise-mitchell.md`). case_id = file name without .md.*
 *Updated by each specialist as the lead/deal moves through the system.*
 *This file is the single source of truth for this lead or deal.*
 
@@ -14,9 +14,9 @@
 | last_updated | |
 | status | New / Qualifying / Active / Under Contract / Nurture / Closed / Dead |
 | lead_type | Buyer / Seller / Both |
-| source | Zillow / Realtor.com / Redfin / Homes.com / Referral / Open house / Walk-in / Phone call / Personal inbox |
+| source | Zillow / Realtor.com / Redfin / Homes.com / HAR.com / Referral / Open house / Walk-in / Phone call / Personal inbox |
 | urgency | CRITICAL / HIGH / MEDIUM / STANDARD |
-| assigned_agent | |
+| assigned_agent | Denise Frank (default) / Keith Knowlton (only if Denise reassigns) |
 | referring_agent | (if referral — who sourced it) |
 | pipeline_row | (Google Sheet row number for cross-reference) |
 

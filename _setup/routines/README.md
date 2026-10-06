@@ -1,24 +1,16 @@
-# Cloud Routine prompts
+# Scheduled task prompts
 
-These are the exact prompts Claude created the three Cloud Routines with during
-onboarding Step 5 (2026-10-06). Keep them in sync with the live routines.
+These files are the exact prompts the Denise HTR scheduled tasks run. Keep them in sync with the live tasks: a task stores its own copy of the prompt, so editing a file here does NOT change a live task until the task is updated or recreated with the new text.
 
-| Routine | Trigger ID | Schedule (America/Chicago) | Prompt file |
+| Scheduled task | ID | Schedule (America/Chicago) | Prompt file |
 |---|---|---|---|
-| diana-lead-processor | trig_01J9igYYQTfv7Nm3gwVG4Pdy | hourly, Mon–Fri 7am–9pm | lead-processor.md |
-| diana-lead-processor-weekend | trig_01KcjNvrvQpjM86xTdFUD5Fs | hourly, Sat–Sun 8am–6pm | lead-processor.md (identical) |
-| diana-daily-briefing | trig_01AVLy24KpyohtetEnZa45Gx | daily 7:56am | daily-briefing.md |
+| diana-lead-processor | trig_0121KPGDonoCPoehq62WnAUc | hourly at :02, Mon–Fri 7am–9pm | lead-processor.md |
+| diana-lead-processor-weekend | trig_01VJALu8DmQyg49sT8Pk3aDa | hourly at :02, Sat–Sun 8am–6pm | lead-processor.md (identical) |
+| diana-daily-briefing | trig_01KRKyeyjfh68cDwQhVci3aK | daily 7:56am | daily-briefing.md |
 
-## Status (2026-10-06): created but DISABLED — connectors not attached
+## Status (2026-10-06)
 
-Routines created from a Claude Code session cannot carry connectors, so a test
-fire of diana-lead-processor ran with no Gmail tools and stopped safely.
-To finish Step 5, open https://claude.ai/code/routines (or Routines in the
-claude.ai sidebar), edit each routine, attach **Gmail** (lead processors also
-**Google Drive**), and switch it to enabled. If editing is not possible,
-create new routines there with the schedules above and the matching prompt
-file below, then delete the disabled ones.
-
-Each routine needs the **Gmail** connector (lead processor also uses **Google Drive**).
-If a routine is recreated from the claude.ai Routines page, paste the matching
-prompt file as its instructions and attach those connectors.
+- Created and enabled, each starting a fresh session per run, with Gmail, Google Drive and Google Sheets attached. They also have every other connector on the account attached; remove the extras on the claude.ai Routines page (only Gmail, Google Drive and Google Sheets are needed).
+- The live tasks still hold the ORIGINAL prompt text (branch claude/awesome-gates-gmrzyz, 662 phone number). The prompt files here now point at `main` and use (832) 661-0475. Update the live tasks with this text, or recreate them and delete the old ones.
+- An earlier set created during onboarding (trig_01J9igYYQTfv7Nm3gwVG4Pdy, trig_01KcjNvrvQpjM86xTdFUD5Fs, trig_01AVLy24KpyohtetEnZa45Gx) was disabled. Delete those on the Routines page if they still exist.
+- Pushing case files back to this repo needs write access from the scheduled task's session. Check the first run summaries to confirm the push works.

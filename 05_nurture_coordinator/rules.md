@@ -2,7 +2,7 @@
 
 ## Rule 1 — Read the case file before designing the touch plan
 
-Every nurture sequence must be built on what you know about the client:
+Every nurture sequence must be built on what you know about the client (from `_shared/cases/YYYY-NNN-agent-lastname.md`):
 - Their area of interest
 - Their stated timeline
 - Their motivation (or lack of one)
@@ -32,8 +32,10 @@ Required touch content (pick one per touch):
 - A relevant market update for their area of interest
 - A new listing that matches their stated criteria (with specific commentary on why)
 - An honest observation about the market that affects their decision
-- A useful piece of local information (neighbourhood development, school boundary change, etc.)
-- A seasonal timing note ("Spring listings tend to peak in March — here's what's hitting the market")
+- A useful piece of local information (neighborhood development, school boundary change, etc.)
+- A seasonal timing note — only if backed by actual local data from 02_property_research or Denise; never state seasonal market patterns as fact without a source
+
+Any market figures in a touch must come from 02_property_research or Denise. Market context for Houston-north / Montgomery County: TO BE FILLED IN BY DENISE.
 
 The client should feel informed, not pursued.
 
@@ -68,7 +70,8 @@ Touch 3: [Date] | [Medium] | [Theme]
 ## Rule 5 — Match the agent's voice in touch content
 
 When producing message briefs for 03_client_communication, specify:
-- Which agent is sending
+- Which agent is sending (Denise by default; Keith only if Denise reassigned the lead in the case file)
+- The voice profile: `_shared/voices/denise.md` or `_shared/voices/keith.md`
 - The tone (warm / informational / light / check-in)
 - The one piece of value the message delivers
 - The single optional ask (if any — "worth a quick call?" is fine; "ready to schedule a showing?" is too much)

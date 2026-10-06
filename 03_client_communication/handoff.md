@@ -3,19 +3,19 @@
 ## What client communication receives
 
 A draft request containing:
-- Who is sending (agent name — used to load the correct voice profile)
+- Who is sending (agent name — Denise by default, Keith only if reassigned in the case file — used to load the correct voice profile)
 - Who is receiving (client name, contact, relationship stage)
 - What the draft should accomplish (first contact, follow-up, update, referral note)
-- Context from the case file or lead qualifier output
+- Context from the case file (`_shared/cases/YYYY-NNN-agent-lastname.md`) or lead qualifier output
 - Any research output if the draft references property or market data
 
 **Required to proceed:** sending agent, recipient, goal, context (case file or summary).
 
-If the voice profile cannot be determined, stop and ask before drafting. A draft in the wrong voice is worse than no draft.
+If the voice profile (`_shared/voices/denise.md` or `_shared/voices/keith.md`) cannot be determined, stop and ask before drafting. A draft in the wrong voice is worse than no draft.
 
 ## What client communication produces
 
-A formatted draft ready for agent review and send.
+A formatted draft ready for agent review and send. You never send it yourself.
 
 Always use this structure:
 
@@ -29,7 +29,7 @@ Re: [One-line context]
 
 [Body — voice-matched, length per rules.md Rule 3]
 
-[Signature per voice profile]
+[Signature per voice profile — phone (832) 661-0475]
 ---
 NOTES FOR AGENT:
 - [What to fill in before sending, if anything]

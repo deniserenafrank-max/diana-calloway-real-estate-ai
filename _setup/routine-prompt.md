@@ -1,25 +1,26 @@
-# Cloud Routines — internal documentation
-# NOT a user-facing copy-paste template.
-# Claude creates both routines automatically during onboarding step 5 via CronCreate/Routines tool.
-# This file documents what each routine does so any team member can read and understand it.
+# Scheduled tasks — plain-language description
+# NOT the prompt text. The exact prompts are in _setup/routines/.
+# This file explains what each scheduled task does so anyone on the team can understand it.
 
 # ─────────────────────────────────────────
-# ROUTINE 1: diana-lead-processor
-# Schedule: hourly, weekdays 7am–9pm, weekends 8am–6pm (Austin local time)
-# Trigger: time-based (future: Redfin webhook for instant CRITICAL alerts)
+# TASK 1: diana-lead-processor (weekdays) and diana-lead-processor-weekend
+# Schedule: hourly, weekdays 7am–9pm, weekends 8am–6pm (America/Chicago)
+# Trigger: time-based only. Nothing starts when an email arrives; the next hourly run picks it up.
 # What it does:
-#   1. Gmail MCP → read all unread emails in leads@[domain]
-#   2. For each email: orchestrator identifies lead type + urgency
-#   3. Lead Qualifier extracts structured data, creates/updates case file in _shared/cases/
-#   4. Assigns agent based on lead type (buyers → Marcus, listings → Priya, VIP/referrals → Diana)
-#   5. Client Communication drafts first response in assigned agent's voice
-#   6. Gmail MCP → writes draft into assigned agent's Gmail drafts folder
-#   7. Gmail MCP → labels original email in leads@ as "Processed — [case_id]"
-#   8. Checks open nurture leads for any touches due today and flags them in the daily briefing
+#   1. Gmail MCP → finds unread mail to leads@hometownrealtorsoftexas.com without the "Processed" label
+#   2. For each email: orchestrator identifies lead type, source and urgency
+#   3. Lead Qualifier extracts structured data, creates/updates the case file in _shared/cases/
+#   4. Assigns the agent per _config/team.md (Denise by default; Keith only if reassigned)
+#   5. Client Communication drafts the first response in the assigned agent's voice
+#   6. Gmail MCP → saves the draft to Denise's Gmail Drafts ("[For Keith]" subject prefix for Keith's cases). Never sends.
+#   7. Gmail MCP → labels the original email "Processed"
+#   8. Adds a pipeline row (Google Sheet, or _shared/pipeline.csv if Sheets can't be written)
+#   9. Lists nurture touches due today in its run summary
+#  10. Commits and pushes the case files to main
 
 # ─────────────────────────────────────────
-# ROUTINE 2: diana-daily-briefing
-# Schedule: 8am daily, every day (Austin local time)
+# TASK 2: diana-daily-briefing
+# Schedule: 7:56am daily (America/Chicago)
 # Trigger: time-based
 # What it does:
 #   1. Reads all case files in _shared/cases/
@@ -28,8 +29,7 @@
 #      - Nurture leads with a scheduled touch due today or overdue
 #      - Active deals under contract with deadlines in the next 7 days
 #        (option period end, financing contingency, close date)
-#      - Any leads processed overnight by diana-lead-processor not yet reviewed
-#   3. Formats a concise morning briefing — one section per category, no padding
-#   4. Gmail MCP → sends the briefing as an email to the full team
-#      (diana@, marcus@, priya@, jordan@ — all at [domain])
+#      - Leads processed in the last 24 hours that are not yet marked reviewed
+#   3. Formats a short briefing — one section per category, no padding
+#   4. Gmail MCP → emails it to denise@ and keith@hometownrealtorsoftexas.com
 #   5. Subject line format: "Team briefing — [Day, Date] — [N] items need action"

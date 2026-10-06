@@ -51,7 +51,7 @@ Status: [Yes / In progress / Unknown / N/A — seller]
 
 Create or update the file in `_shared/cases/` using `CASE_TEMPLATE.md`.
 
-File name format: `CASE_[LAST NAME]_[FIRST INITIAL]_[YYYYMMDD].md`
+File name format: `_shared/cases/YYYY-NNN-agent-lastname.md` (e.g. `2026-001-denise-mitchell.md`). See rules.md Rule 1.
 
 Populate every field you have data for. Mark `[TBD]` for fields that will fill in over time. Never leave a field blank without marking it.
 
@@ -59,7 +59,7 @@ Populate every field you have data for. Mark `[TBD]` for fields that will fill i
 
 ### Output 3 — Pipeline summary block
 
-Output the structured pipeline summary block (see rules.md Rule 7) and write it into the case file header. This is what Claude reads when the team asks for a pipeline view — no spreadsheet needed.
+Output the structured pipeline summary block (see rules.md Rule 7) and write it into the case file header. This is what Claude reads when Denise or Keith asks for a pipeline view — no spreadsheet needed.
 
 ---
 

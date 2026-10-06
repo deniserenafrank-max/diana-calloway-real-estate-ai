@@ -20,7 +20,7 @@ prospect_name:    [full name if known]
 prospect_phone:   [if known]
 prospect_email:   [if known]
 lead_type:        [Buyer / Seller / Unknown]
-assign_to:        [agent name — from team-standards.md assignment defaults]
+assign_to:        [agent name — from _config/team.md assignment defaults: Denise Frank by default; Keith Knowlton only when Denise reassigns in the case file]
 raw_message:      [original text from email or team member, unmodified]
 notes:            [anything else the receiving specialist needs to know]
 confidence:       [high / med / low]
@@ -51,7 +51,7 @@ If lead_type is genuinely ambiguous: mark as "Unknown" and let 01_lead_qualifier
 | Handoff to | When |
 |---|---|
 | 01_lead_qualifier | Every new lead, without exception |
-| 02_property_research | Property or neighbourhood research request |
+| 02_property_research | Property or neighborhood research request |
 | 03_client_communication | Draft request — always paired with a complete context packet |
 | 04_transaction_coordinator | Contract executed — include the full case file |
 | 05_nurture_coordinator | Lead qualifier outputs "not ready" flag |

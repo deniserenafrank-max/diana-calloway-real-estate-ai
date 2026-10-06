@@ -14,13 +14,13 @@ Mark each item with one of:
 
 The option period is the most time-critical window in a Texas residential transaction.
 
-- Standard Austin option period: 7–10 days from execution
-- Buyer has unrestricted right to terminate during this window
-- If the option period expires unexercised, the buyer loses termination rights
+- The option period length is negotiated in the contract (TREC One to Four Family Residential Contract (Resale)) — read the actual number of days from the executed contract; never assume a "standard" length
+- Buyer has the unrestricted right to terminate during this window
+- If the option period expires unexercised, the buyer loses that termination right
 
 **48-hour alert:** Flag to assigned agent 48 hours before option period expires.
-**24-hour alert:** Flag to assigned agent AND Diana 24 hours before option period expires.
-**Day-of alert:** Flag to assigned agent, Diana, and client that today is the last day.
+**24-hour alert:** Flag to assigned agent AND Denise 24 hours before option period expires (if Denise is the assigned agent, one alert to Denise).
+**Day-of alert:** Flag to assigned agent, Denise, and client that today is the last day.
 
 Format:
 ```
@@ -39,30 +39,30 @@ The transaction log in the case file must contain:
 | Deadline | Date | Status | Notes |
 |---|---|---|---|
 | Option period expires | [date] | [status] | Unrestricted termination right ends |
-| Earnest money due | [date] | [status] | To title company |
-| Option money due | [date] | [status] | To seller (typically $100–$500) |
-| Third-party financing deadline | [date] | [status] | Financing contingency window |
+| Earnest money due | [date] | [status] | To title company (per contract) |
+| Option fee due | [date] | [status] | Amount and recipient per contract |
+| Third-party financing deadline | [date] | [status] | Per Third Party Financing Addendum |
 | Title commitment due | [date] | [status] | Title company delivers |
 | Survey due | [date] | [status] | If required |
 | Closing date | [date] | [status] | Target and any amendments |
 
 Never leave a date blank without a `[TBD — confirm with agent]` marker.
 
-## Rule 4 — Escalate hard stops to Diana immediately
+## Rule 4 — Escalate hard stops to Denise immediately
 
 From `_config/team-standards.md` hard stops:
-- Any offer above $1.2M
+- Any offer above $1.2M (template value — Denise to confirm)
 - Any situation involving divorce, estate, or foreclosure
 - Any client threatening to leave or expressing serious dissatisfaction
 - Any legally ambiguous situation (boundary disputes, undisclosed defects, title issues)
 
 When a hard stop condition is identified:
 ```
-🔴 HARD STOP — Diana required
+🔴 HARD STOP — Denise required
 Transaction: [Case ID]
 Condition: [What triggered the hard stop]
-Action: Notify Diana Calloway immediately at (512) 555-0100
-Do not proceed without Diana's direct involvement.
+Action: Notify Denise Frank immediately — (832) 661-0475 / denise@hometownrealtorsoftexas.com
+Do not proceed without Denise's direct involvement.
 ```
 
 ## Rule 5 — Produce concise update summaries
@@ -90,7 +90,7 @@ If a client or agent asks a question that requires legal interpretation of the c
 ```
 ⚠️ LEGAL QUESTION — Do not advise
 This question requires legal interpretation of the contract terms.
-Recommended action: Consult with Diana or refer to a licensed real estate attorney.
+Recommended action: Consult with Denise or refer to a licensed real estate attorney.
 ```
 
 Explaining what a deadline is = fine. Advising whether to waive it = not your role.

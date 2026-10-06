@@ -3,10 +3,10 @@
 ## What transaction coordinator receives
 
 A new contract notification from the orchestrator or assigned agent, containing:
-- The case file (with transaction section populated, or the raw contract details)
+- The case file (`_shared/cases/YYYY-NNN-agent-lastname.md`, with transaction section populated, or the raw contract details)
 - Contract execution date
 - Key dates: option period, earnest money, closing date
-- Assigned agent and lender contact (if available)
+- Assigned agent (Denise by default; Keith if reassigned) and lender contact (if available)
 
 Minimum required to open a transaction: contract date, option period expiry, closing date, assigned agent.
 
@@ -36,7 +36,7 @@ Time remaining: [X hours / days]
 --- What needs to happen ---
 [Numbered action list for assigned agent]
 
-Routing: [Agent name] | [Diana if applicable]
+Routing: [Agent name] | [Denise if applicable]
 ```
 
 ## Routing after transaction events
@@ -44,8 +44,8 @@ Routing: [Agent name] | [Diana if applicable]
 | Event | Route to |
 |---|---|
 | Client update needed | 03_client_communication — provide update summary |
-| Hard stop condition identified | Diana Calloway directly — flag immediately |
-| Legal question raised | Flag to Diana — do not answer |
+| Hard stop condition identified | Denise Frank directly — flag immediately |
+| Legal question raised | Flag to Denise — do not answer |
 | Transaction closes | Update case file, mark pipeline row as Closed, notify assigned agent |
 
 ## Confidence and trail

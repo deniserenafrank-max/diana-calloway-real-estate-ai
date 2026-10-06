@@ -6,8 +6,10 @@ Every lead that passes through this specialist gets a case file. No exceptions.
 
 - Check `_shared/cases/` for an existing file matching the prospect name or email.
 - If found: update it. If not: create one from `_shared/cases/CASE_TEMPLATE.md`.
-- File name format: `CASE_[LAST NAME]_[FIRST INITIAL]_[YYYYMMDD].md`
-- Example: `CASE_MITCHELL_S_20260513.md`
+- File name format (single standard everywhere): `_shared/cases/YYYY-NNN-agent-lastname.md`
+  - `YYYY` = year the case was opened; `NNN` = next sequential case number for that year (zero-padded, check existing files); `agent` = assigned agent's first name, lowercase (`denise` or `keith`); `lastname` = prospect's last name, lowercase.
+- Example: `2026-001-denise-mitchell.md`
+- `case_id` = the filename without `.md` (e.g. `2026-001-denise-mitchell`).
 
 ## Rule 2 — Score the lead
 
@@ -47,8 +49,8 @@ Buyer, Seller, or Unknown. Evidence:
 Every qualification summary ends with a single directive for the agent. Not a list. One thing.
 
 Examples:
-- "Call James Rodriguez now. He's pre-approved $720k, relocating for Dell, ready in 90 days. Lead the call with Mueller — that's his area."
-- "Text Sarah Mitchell within 5 minutes. She wants to tour 4504 Clawson. Confirm availability for this weekend. Do not ask qualifying questions yet."
+- "Call James Rodriguez now. He's pre-approved $720k, relocating for a new job in The Woodlands, ready in 90 days. Lead the call with Magnolia — that's his first-choice area."
+- "Text Sarah Mitchell within 5 minutes. She wants to tour 1234 Example Oak Dr in Conroe. Confirm availability for this weekend. Do not ask qualifying questions yet."
 - "Email the Garcias this evening. They're 6–12 months out and exploring. Warm intro only — don't pitch the CMA yet."
 
 ## Rule 6 — Route after qualification
@@ -62,17 +64,17 @@ Examples:
 
 ## Rule 7 — Include a pipeline summary block in your output
 
-After every qualification, print a structured summary block. This makes the lead easy to scan without opening the full case file, and gives Claude the data it needs when the team asks for a pipeline view.
+After every qualification, print a structured summary block. This makes the lead easy to scan without opening the full case file, and gives Claude the data it needs when Denise or Keith asks for a pipeline view.
 
 ```
 PIPELINE SUMMARY
-case_id:        [CASE_LASTNAME_I_YYYYMMDD]
+case_id:        [YYYY-NNN-agent-lastname]
 date:           [today's date]
 source:         [platform or intake path]
 prospect_name:  [full name]
 contact:        [phone and/or email]
 lead_type:      [Buyer / Seller / Unknown]
-assigned_agent: [from team.md defaults]
+assigned_agent: [from _config/team.md defaults — Denise Frank unless reassigned to Keith Knowlton in the case file]
 urgency:        [CRITICAL / HIGH / MEDIUM / STANDARD]
 status:         New
 next_action:    [the one directive from Rule 5]

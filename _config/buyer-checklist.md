@@ -1,6 +1,6 @@
-# Buyer Transaction Checklist — Austin, TX
+# Buyer Transaction Checklist — Texas (Houston-north / Montgomery County)
 *Texas-specific. TREC contracts. Referenced by 04_transaction_coordinator.*
-*Updated: 2026-05-13*
+*Updated: 2026-10-06*
 
 ---
 
@@ -9,21 +9,21 @@
 - [ ] Buyer agency agreement signed (required in Texas since Aug 2024 NAR settlement)
 - [ ] Pre-approval letter received and verified with lender
 - [ ] Buyer needs and wants documented in case file
-- [ ] Target neighbourhoods and criteria confirmed
+- [ ] Target neighborhoods / towns and criteria confirmed (e.g. Montgomery, Pinehurst, Magnolia, Spring, Conroe, Shenandoah)
 - [ ] Showing schedule established
-- [ ] MLS search set up with auto-alerts
+- [ ] MLS (HAR.com) search set up with auto-alerts
 
 ---
 
 ## Offer stage
 
 - [ ] Comparative market analysis (CMA) run for subject property
-- [ ] TREC One-to-Four Family Residential Contract prepared
+- [ ] TREC One to Four Family Residential Contract (Resale) prepared
 - [ ] Purchase price and terms confirmed with buyer
-- [ ] Earnest money amount confirmed (typically 1% of purchase price in Austin)
-- [ ] Option fee confirmed (typically $150–$400 for 7–10 day option period)
-- [ ] Option period length confirmed (7–10 days standard Austin market 2026)
-- [ ] Third-Party Financing Addendum attached (if not cash)
+- [ ] Earnest money amount confirmed (negotiated per contract — typical local amount: Denise to confirm)
+- [ ] Option fee confirmed (negotiated per contract — typical local amount: Denise to confirm)
+- [ ] Option period length confirmed (negotiated in the contract — typical local length: Denise to confirm)
+- [ ] Third Party Financing Addendum attached (if not cash)
 - [ ] Offer submitted to listing agent
 - [ ] Offer response deadline noted
 
@@ -45,11 +45,11 @@
 ## Under contract — post-option (financing & appraisal)
 
 - [ ] Lender notified of executed contract — loan application submitted
-- [ ] Survey ordered (seller typically provides in Austin — confirm)
+- [ ] Survey ordered or existing survey confirmed (who provides it is set in the contract — confirm)
 - [ ] Appraisal ordered by lender
 - [ ] Appraisal received — at value / below value / above value noted
 - [ ] If below value: negotiate price reduction, buyer makes up difference, or terminate
-- [ ] Financing contingency deadline tracked (typically 21–30 days from contract)
+- [ ] Financing contingency deadline tracked (per Third Party Financing Addendum — note the date from the contract)
 - [ ] Loan approval (clear to close) received
 - [ ] Financing contingency removed
 
@@ -74,19 +74,19 @@
 - [ ] Keys received
 - [ ] MLS status updated to Closed
 - [ ] Case file status updated to Closed
-- [ ] Closing gift organised (Diana's standard: within 1 week of closing)
+- [ ] Closing gift organized (template standard: within 1 week of closing — Denise to confirm)
 - [ ] Post-closing check-in scheduled (30-day call)
 
 ---
 
-## Key Austin-specific notes
+## Key Texas notes
 
-**Option period:** Non-refundable but gives buyer the right to terminate for any reason. Use it. Always book the inspector on Day 1 or 2.
+**Option period:** The option fee is paid for the buyer's unrestricted right to terminate during the option period; its length and fee are negotiated in the contract. Use it. Always book the inspector on Day 1 or 2.
 
-**Survey:** Sellers typically provide existing survey in Austin. If more than 5 years old or if there have been improvements, buyer should order new one (~$600).
+**Survey:** Whether the seller provides an existing survey or the buyer orders a new one is set in the contract. If an existing survey is old or there have been improvements, the buyer may need a new one — confirm cost locally.
 
-**Title companies commonly used in Austin:** Austin Title, Texans Title, Capital Title, Stewart Title. Confirm with listing agent which title company is handling.
+**Title companies:** Confirm with the listing agent which title company is handling. Local title company list: TO BE FILLED IN BY DENISE.
 
-**Homestead exemption:** Remind buyers to file after closing. Saves meaningful $ on property taxes annually.
+**Homestead exemption:** Remind buyers to file after closing. It can reduce property taxes.
 
-**Property taxes in Austin/Travis County:** Among the highest in Texas. Confirm with buyer at qualification stage — monthly payment is often higher than expected due to taxes.
+**Property taxes:** Confirm estimated taxes (and any HOA costs) with the buyer at qualification stage — the monthly payment is often higher than expected. Local tax rates: pull current figures; do not quote from memory.

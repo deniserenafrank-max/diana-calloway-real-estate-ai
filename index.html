@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Diana Calloway Real Estate — Team Portal</title>
+  <title>Hometown Realtors of Texas — Team Portal</title>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -336,7 +336,7 @@
 
 <!-- Sticky nav -->
 <nav class="site-nav">
-  <div class="nav-brand">Diana Calloway Real Estate &nbsp;<span>/ Team Portal</span></div>
+  <div class="nav-brand">Denise HTR &nbsp;<span>/ Team Portal</span></div>
   <ul class="nav-links">
     <li><a href="#intake">Enter lead</a></li>
     <li><a href="#pipeline">Pipeline</a></li>
@@ -349,7 +349,7 @@
 <!-- Hero -->
 <div class="hero">
   <p class="hero-label">AI Operating System</p>
-  <h1>Diana Calloway Real Estate</h1>
+  <h1>Denise HTR — Hometown Realtors of Texas</h1>
   <p>Enter leads, check the pipeline, manage the system. Everything runs through Claude.</p>
 </div>
 
@@ -370,7 +370,7 @@
       <div class="form-grid">
         <div class="form-group"><label>First name</label><input id="b-fname" type="text" placeholder="Sarah" /></div>
         <div class="form-group"><label>Last name</label><input id="b-lname" type="text" placeholder="Mitchell" /></div>
-        <div class="form-group"><label>Phone</label><input id="b-phone" type="tel" placeholder="(512) 555-0143" /></div>
+        <div class="form-group"><label>Phone</label><input id="b-phone" type="tel" placeholder="(281) 555-0142" /></div>
         <div class="form-group"><label>Email</label><input id="b-email" type="email" placeholder="sarah@email.com" /></div>
         <div class="form-group">
           <label>Pre-approved?</label>
@@ -433,18 +433,17 @@
         <div class="form-group full">
           <label>Areas of interest</label>
           <div class="checkbox-group" id="b-areas">
-            <label class="checkbox-label"><input type="checkbox" value="Mueller" /> Mueller</label>
-            <label class="checkbox-label"><input type="checkbox" value="Hyde Park" /> Hyde Park</label>
-            <label class="checkbox-label"><input type="checkbox" value="East Austin" /> East Austin</label>
-            <label class="checkbox-label"><input type="checkbox" value="Barton Hills" /> Barton Hills</label>
-            <label class="checkbox-label"><input type="checkbox" value="Zilker" /> Zilker</label>
-            <label class="checkbox-label"><input type="checkbox" value="Bouldin Creek" /> Bouldin Creek</label>
-            <label class="checkbox-label"><input type="checkbox" value="Circle C" /> Circle C</label>
-            <label class="checkbox-label"><input type="checkbox" value="Steiner Ranch" /> Steiner Ranch</label>
+            <label class="checkbox-label"><input type="checkbox" value="Montgomery" /> Montgomery</label>
+            <label class="checkbox-label"><input type="checkbox" value="Pinehurst" /> Pinehurst</label>
+            <label class="checkbox-label"><input type="checkbox" value="Magnolia" /> Magnolia</label>
+            <label class="checkbox-label"><input type="checkbox" value="Spring" /> Spring</label>
+            <label class="checkbox-label"><input type="checkbox" value="Conroe" /> Conroe</label>
+            <label class="checkbox-label"><input type="checkbox" value="Shenandoah" /> Shenandoah</label>
+            <label class="checkbox-label"><input type="checkbox" value="Other nearby area" /> Other nearby area</label>
           </div>
         </div>
         <div class="form-group full"><label>Why are you moving? <span style="font-weight:normal;color:var(--mid)">(optional)</span></label><textarea id="b-why" placeholder="Relocating for work, lease ending, upsizing..."></textarea></div>
-        <div class="form-group"><label>How did you hear about us?</label><input id="b-source" type="text" placeholder="Zillow, Redfin, referral, open house..." /></div>
+        <div class="form-group"><label>How did you hear about us?</label><input id="b-source" type="text" placeholder="Zillow, HAR.com, Redfin, referral, open house..." /></div>
       </div>
       <button class="generate-btn" onclick="generateBuyer()">Generate intake context →</button>
     </div>
@@ -454,9 +453,9 @@
       <div class="form-grid">
         <div class="form-group"><label>First name</label><input id="s-fname" type="text" placeholder="Helen" /></div>
         <div class="form-group"><label>Last name</label><input id="s-lname" type="text" placeholder="Garcia" /></div>
-        <div class="form-group"><label>Phone</label><input id="s-phone" type="tel" placeholder="(512) 555-0199" /></div>
+        <div class="form-group"><label>Phone</label><input id="s-phone" type="tel" placeholder="(936) 555-0187" /></div>
         <div class="form-group"><label>Email</label><input id="s-email" type="email" placeholder="helen@email.com" /></div>
-        <div class="form-group full"><label>Property address</label><input id="s-address" type="text" placeholder="2208 Speedway, Austin TX 78705" /></div>
+        <div class="form-group full"><label>Property address</label><input id="s-address" type="text" placeholder="1234 Example Oak Dr, Conroe TX" /></div>
         <div class="form-group">
           <label>Looking to list</label>
           <select id="s-timeline">
@@ -531,8 +530,8 @@
 
     <div class="prompt-list">
       <div class="prompt-row">
-        <code>Summarise the pipeline</code>
-        <button class="prompt-copy" onclick="copyPrompt(this, 'Summarise the pipeline')">Copy</button>
+        <code>Summarize the pipeline</code>
+        <button class="prompt-copy" onclick="copyPrompt(this, 'Summarize the pipeline')">Copy</button>
       </div>
       <div class="prompt-row">
         <code>Show me all active leads</code>
@@ -543,8 +542,8 @@
         <button class="prompt-copy" onclick="copyPrompt(this, 'Which leads are CRITICAL or HIGH urgency?')">Copy</button>
       </div>
       <div class="prompt-row">
-        <code>Show me Marcus's leads</code>
-        <button class="prompt-copy" onclick="copyPrompt(this, 'Show me Marcus\'s leads')">Copy</button>
+        <code>Show me Keith's leads</code>
+        <button class="prompt-copy" onclick="copyPrompt(this, 'Show me Keith\'s leads')">Copy</button>
       </div>
       <div class="prompt-row">
         <code>Which leads are under contract?</code>
@@ -613,13 +612,13 @@
         </tr>
         <tr>
           <td><span class="folder-name">02_property_research</span> <span class="model-badge model-sonnet">Sonnet</span></td>
-          <td>Neighbourhood briefs, CMAs, showing prep, MLS flags.</td>
-          <td>"Research [neighbourhood] for a buyer around $600k."</td>
+          <td>Neighborhood briefs, CMAs, showing prep, MLS flags.</td>
+          <td>"Research [town or neighborhood] for a buyer at [budget]."</td>
         </tr>
         <tr>
           <td><span class="folder-name">03_client_communication</span> <span class="model-badge model-sonnet">Sonnet</span></td>
           <td>Drafts emails and texts in each agent's voice. Never sends autonomously.</td>
-          <td>"Draft a follow-up from Marcus to Sarah Mitchell."</td>
+          <td>"Draft a follow-up from Denise to Sarah Mitchell."</td>
         </tr>
         <tr>
           <td><span class="folder-name">04_transaction_coordinator</span> <span class="model-badge model-sonnet">Sonnet</span></td>
@@ -658,7 +657,7 @@
         <div class="step-num">1</div>
         <div class="step-body">
           <h3>Download the project</h3>
-          <p>Download or clone the <a href="https://github.com/Six8Coffee/diana-calloway-real-estate-ai" target="_blank" style="color:var(--gold)">agency-system repo</a> to your computer. Open the folder in Claude Code as your project.</p>
+          <p>Download or clone the <a href="https://github.com/deniserenafrank-max/diana-calloway-real-estate-ai" target="_blank" style="color:var(--gold)">Denise HTR repo</a> to your computer. Open the folder in Claude Code as your project.</p>
         </div>
       </div>
       <div class="step">
@@ -701,12 +700,12 @@
       <div class="maint-card">
         <h3>Update an agent's voice</h3>
         <p>Use when communication style has shifted — new sign-off, different tone, phrases to avoid.</p>
-        <code>"Update Marcus's voice profile — he's started [describe change]. Rewrite his voice file."</code>
+        <code>"Update Denise's voice profile — here are real emails she sent to leads: [paste]. Rewrite her voice file."</code>
       </div>
       <div class="maint-card">
         <h3>Update team details</h3>
         <p>Use for role changes, assignment rule updates, or contact detail corrections.</p>
-        <code>"Update our team config — Jordan is now handling buyer leads independently. Update _config/team.md."</code>
+        <code>"Update our team config — Keith is now handling [lead type] by default. Update _config/team.md."</code>
       </div>
       <div class="maint-card">
         <h3>Add a new agent</h3>
@@ -715,8 +714,8 @@
       </div>
       <div class="maint-card">
         <h3>Update our standards</h3>
-        <p>Use when Diana's quality rules evolve. Changes here ripple through every specialist.</p>
-        <code>"Update our team standards — Diana's new rule: [describe it]. Rewrite _config/team-standards.md."</code>
+        <p>Use when Denise's quality rules evolve. Changes here ripple through every specialist.</p>
+        <code>"Update our team standards — Denise's new rule: [describe it]. Rewrite _config/team-standards.md."</code>
       </div>
       <div class="maint-card">
         <h3>Adjust the daily briefing</h3>
@@ -728,8 +727,8 @@
 </section>
 
 <footer>
-  Diana Calloway Real Estate &nbsp;&mdash;&nbsp; AI Operating System &nbsp;&mdash;&nbsp;
-  <a href="https://github.com/Six8Coffee/diana-calloway-real-estate-ai" target="_blank" style="color:var(--gold)">GitHub</a>
+  Denise HTR &nbsp;&mdash;&nbsp; Hometown Realtors of Texas LLC &nbsp;&mdash;&nbsp; AI Operating System &nbsp;&mdash;&nbsp;
+  <a href="https://github.com/deniserenafrank-max/diana-calloway-real-estate-ai" target="_blank" style="color:var(--gold)">GitHub</a>
 </footer>
 
 <script>

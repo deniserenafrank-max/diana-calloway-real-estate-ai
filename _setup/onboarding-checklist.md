@@ -1,4 +1,4 @@
-# Onboarding Checklist — Diana Calloway Real Estate AI System
+# Onboarding Checklist — Denise HTR (Hometown Realtors of Texas)
 *Run this once. Claude guides you through each step interactively.*
 *Estimated time: 20–30 minutes.*
 
@@ -43,8 +43,8 @@ Every email that arrives here is treated as a lead. No filtering needed.
 **What you do:**
 1. Go to Google Workspace Admin → Directory → Groups (or Users)
 2. Create `leads@[yourdomain]` as a group or shared mailbox
-3. Add Diana as the owner. Add all team members as members.
-4. Tell Claude the full address (e.g. `leads@dianacalloway.com`)
+3. Add Denise as the owner. Add all team members as members.
+4. Tell Claude the full address (e.g. `leads@hometownrealtorsoftexas.com`)
 
 **How you know it worked:**
 Send a test email to `leads@[yourdomain]` from your personal email. Confirm it arrived.
@@ -66,7 +66,7 @@ Auto-forwards them to `leads@[yourdomain]`.
 
 **The filter logic Claude generates:**
 ```
--from:(@dianacalloway.com) (buy OR sell OR property OR listing OR interested 
+-from:(@hometownrealtorsoftexas.com) (buy OR sell OR property OR listing OR interested 
 OR "looking for" OR "home search" OR realtor OR agent OR showing OR offer)
 ```
 
@@ -86,7 +86,7 @@ Shares the link into CLAUDE.md config block.
 Click Connect in Claude Settings. Authorise Drive access. Confirm to Claude.
 
 **The pipeline sheet Claude creates:**
-`Diana's Team Pipeline` — columns:
+The pipeline sheet (current title `Diana's Team Pipeline`; rename it and `_config/team.md` together) — columns:
 `case_id | date | source | prospect_name | contact | lead_type | assigned_agent | urgency | status | next_action | draft_ready | notes | closed_date`
 
 **How you know it worked:**
@@ -101,10 +101,10 @@ Asks you 4 questions. Writes the answers to `_config/team.md`.
 No other action required from you.
 
 **The 4 questions:**
-1. What is your team's domain? (e.g. `dianacalloway.com`)
+1. What is your team's domain? (e.g. `hometownrealtorsoftexas.com`)
 2. What are your team members' names and email addresses?
 3. Who handles buyer leads primarily? Who handles listing leads?
-4. What is Diana's direct mobile number? (used in drafted communications)
+4. What phone number goes in drafted communications? (Hometown: (832) 661-0475)
 
 **How you know it worked:**
 Claude shows you the completed `_config/team.md` for review. You confirm.
@@ -120,7 +120,7 @@ No copy-pasting. No settings page. Claude does it in this conversation.
 **The routine:**
 - Name: `diana-lead-processor`
 - Schedule: hourly, weekdays 7am–9pm / weekends 8am–6pm (your local time)
-- What it does: reads `leads@`, processes each unread email through the specialist pipeline, writes drafted responses into assigned agent Gmail drafts, labels processed emails, updates the pipeline sheet, sends Diana an 8am daily digest
+- What it does: reads `leads@`, processes each unread email through the specialist pipeline, writes drafted responses into assigned agent Gmail drafts, labels processed emails, updates the pipeline sheet, plus a separate 7:56am daily briefing to Denise and Keith
 
 **What you do:**
 Confirm you want Claude to create it. Claude creates it. Done.
@@ -144,7 +144,7 @@ Updates CLAUDE.md STATUS block to OPERATIONAL ✅.
 Say "run the test." Wait. Confirm the draft looks right.
 
 **How you know it worked:**
-A draft from Marcus (for the mock buyer lead) appears in marcus@[yourdomain] drafts.
+A draft from Denise (for the mock buyer lead) appears in Denise's Gmail Drafts.
 A new row appears in the pipeline sheet.
 Claude says "Onboarding complete. System is live."
 
@@ -156,7 +156,7 @@ The system is operational. You do not need to run onboarding again.
 
 **To use the system (Path C — walk-ins, calls, open houses):**
 Open Claude Code in this folder. Describe the situation in plain English.
-"New lead — phone call, buyer, James Rodriguez, 512-555-0198, looking in Hyde Park, $750k, wants to move in 90 days."
+"New lead — phone call, buyer, James Rodriguez, (936) 555-0198, looking in Conroe, pre-approved, wants to move in 90 days."
 Claude routes it, qualifies it, and drafts a response. Done.
 
 **To reset:**

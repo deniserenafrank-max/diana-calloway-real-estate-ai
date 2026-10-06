@@ -3,18 +3,18 @@
 ## What property research receives
 
 A research request from 01_lead_qualifier or 00_orchestrator, containing:
-- The type of research needed (neighbourhood brief, CMA, showing prep, listing prep, etc.)
+- The type of research needed (neighborhood brief, CMA, showing prep, listing prep, etc.)
 - The client profile (from case file or handoff envelope)
 - The property or area in question
 - The urgency level (sets depth per rules.md Rule 6)
 
 Minimum required to proceed: research type + area/property + urgency level.
 
-If the client profile is missing, produce a generic brief and flag: "No case file found — research is not client-tailored. Run 01_lead_qualifier first for personalised output."
+If the client profile is missing, produce a generic brief and flag: "No case file found — research is not client-tailored. Run 01_lead_qualifier first for personalized output."
 
 ## What property research produces
 
-A structured brief, labelled by type and formatted for agent use.
+A structured brief, labeled by type and formatted for agent use.
 
 Every brief includes:
 - A clear header identifying client, property/area, and brief type
@@ -49,7 +49,7 @@ For: [Client name] | [Lead type] | [Budget or goal]
 | Showing prep brief | 03_client_communication — draft follow-up text/email if requested |
 | Listing prep brief | 03_client_communication — draft listing presentation intro if requested |
 | CMA | 03_client_communication — no immediate draft needed unless requested |
-| Neighbourhood brief (standalone) | Return to requester — no automatic routing |
+| Neighborhood brief (standalone) | Return to requester — no automatic routing |
 
 Research does not automatically trigger communication drafts. The requester specifies whether a draft follows.
 

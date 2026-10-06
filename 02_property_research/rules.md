@@ -7,7 +7,7 @@ Before writing a single line of research, check for a case file in `_shared/case
 - Note budget, preferred areas, timeline, family situation, priorities
 - Tailor all research to that profile
 
-Research that ignores the client is generic. Generic research fails the Diana test.
+Research that ignores the client is generic. Generic research fails the Denise HTR test.
 
 ## Rule 2 — Know which brief type you are producing
 
@@ -15,34 +15,38 @@ Each request type has a different output format:
 
 | Request type | Primary output |
 |---|---|
-| Neighbourhood brief | Character + price range + key stats + who lives here + agent talking points |
+| Neighborhood brief | Character + price range + key stats + who lives here + agent talking points |
 | CMA (comparative market analysis) | Sold comps + active competition + pricing opinion |
-| Showing prep | Property summary + neighbourhood context + client-relevant highlights + questions to expect |
+| Showing prep | Property summary + neighborhood context + client-relevant highlights + questions to expect |
 | Listing prep | Market position + pricing recommendation + staging notes + competitive landscape |
 | School district | District name + ratings + boundary notes + top schools + zoning caution |
 | Market overview | Supply/demand summary + days on market + price trend + buyer vs seller conditions |
 
-Never mix types without labelling sections clearly.
+Never mix types without labeling sections clearly.
 
-## Rule 3 — Use real Austin neighbourhood context
+## Rule 3 — Use real local context, never invented context
 
-You have detailed knowledge of Austin's neighbourhoods. Use it. Do not produce generic suburb descriptions.
+Use real neighborhood context for Denise's service area. Do not produce generic suburb descriptions — and do not fill gaps with invented facts.
 
-Neighbourhood-specific facts to include where relevant:
-- **Mueller**: Planned community, HOA-governed, highly walkable, strong demand from families, Dell Medical School proximity, new construction mixed with townhomes, price premium for walkability.
-- **Hyde Park**: Original 1890s neighbourhood, older stock (bungalows, craftsmans), strong personality, UT proximity drives rental demand, wide price range by street.
-- **East Austin (78702/78721)**: Rapid gentrification, mixed older homes and new infill, coffee shop density, young professional demographic, noise and bar district proximity worth noting.
-- **Barton Hills / Bouldin Creek**: Zilker Park proximity, premium for outdoor access, older homes on large lots in Barton Hills, denser townhomes in Bouldin.
-- **Circle C**: Family suburb, Austin ISD and some Bowie Feeder, larger lots, strong schools, lower walkability, strong resale.
-- **Steiner Ranch**: Leander ISD, master-planned, lake access, commute to downtown is 35–50 min, strong family demographic, HOA-heavy.
+### Market context — Houston-north / Montgomery County: TO BE FILLED IN BY DENISE
+
+Service areas: Montgomery, Pinehurst, Magnolia, Spring, Conroe, Shenandoah, and surrounding.
+
+For each area, Denise to supply: character, typical housing stock, HOA prevalence, school district notes, commute notes, and price dynamics. Until she does, do not state area-specific facts (school ratings, ISD names, prices per area, days on market, inventory levels). Instead, list what the agent should verify on HAR.com or with the local source.
+
+Statewide facts that apply everywhere:
+- Texas residential transactions use TREC promulgated forms.
+- Resale purchases typically use the One to Four Family Residential Contract (Resale).
+- Financed purchases use the Third Party Financing Addendum.
+- The option period is negotiated in the contract — there is no fixed default length.
 
 ## Rule 4 — Flag what the agent needs to verify
 
-Some things you cannot confirm without live MLS access. Always flag these explicitly:
+Some things you cannot confirm without live MLS (HAR.com) access. Always flag these explicitly:
 
 ```
-⚠️ MLS CHECK NEEDED: Verify current active listings in this price range before quoting specific properties to client.
-⚠️ MLS CHECK NEEDED: Confirm current days-on-market baseline — as of 2026 Austin averages 7+ months inventory overall, but varies significantly by submarket.
+⚠️ MLS CHECK NEEDED: Verify current active listings in this price range on HAR.com before quoting specific properties to client.
+⚠️ MLS CHECK NEEDED: Confirm current days-on-market and inventory baseline for this area on HAR.com — it varies by submarket.
 ```
 
 ## Rule 5 — Pricing briefs must include a recommendation
@@ -64,7 +68,7 @@ Verify: [what live MLS pull would confirm or adjust]
 | Urgency | Research depth |
 |---|---|
 | CRITICAL or HIGH | Key facts only — 5–8 bullet points the agent can use in the next 15 minutes |
-| MEDIUM | Full brief — neighbourhood + comps + talking points |
+| MEDIUM | Full brief — neighborhood + comps + talking points |
 | STANDARD | Full brief + extended market context |
 
 A 2-page research document delivered after the showing is useless. Know the SLA.

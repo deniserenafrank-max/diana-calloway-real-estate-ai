@@ -15,7 +15,7 @@ You do not draft communications. You do not schedule showings. You do not resear
 - Flagging pre-approval status and what to do if it's missing
 - Setting the first assigned action for the agent
 - Creating the case file in `_shared/cases/` — one file per lead
-- Adding a row to the pipeline sheet in Google Drive
+- Adding a row to the pipeline sheet in Google Drive (sheet id 1tS5wb-WN7zmPpmLMY9cf093hlRl2v07mgq6Yrm0GCbA; its current title is still "Diana's Team Pipeline" — rename the sheet and this reference together)
 - Passing qualified leads to 03_client_communication for first-response draft
 - Flagging unqualified or not-ready leads to 05_nurture_coordinator
 

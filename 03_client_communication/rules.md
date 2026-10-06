@@ -4,12 +4,10 @@
 
 Before producing any draft, load the correct file from `_shared/voices/`:
 
-- `_shared/voices/diana.md` — Diana Calloway (owner, buyer and listing agent)
-- `_shared/voices/marcus.md` — Marcus Webb (buyer specialist)
-- `_shared/voices/priya.md` — Priya Nair (listing coordinator, marketing)
-- `_shared/voices/jordan.md` — Jordan Kim (junior agent)
+- `_shared/voices/denise.md` — Denise Frank (Broker / lead agent — all buyers, all listings/sellers, all referrals by default)
+- `_shared/voices/keith.md` — Keith Knowlton (Agent — only for leads Denise has reassigned to him in the case file)
 
-If the handoff does not specify who is sending, check `_config/team.md` assignment defaults. If still ambiguous, flag it before drafting.
+If the handoff does not specify who is sending, check the case file's assigned agent, then `_config/team.md` assignment defaults (default is Denise). If still ambiguous, flag it before drafting.
 
 ## Rule 2 — Never open with a generic line
 
@@ -21,7 +19,7 @@ These openers are banned:
 - "As per my last message"
 - "I wanted to reach out"
 
-Every first line must reference something specific: the property they asked about, the neighbourhood they mentioned, the deadline they have, the person who referred them. If there is nothing specific to reference, the case file is incomplete.
+Every first line must reference something specific: the property they asked about, the neighborhood or town they mentioned, the deadline they have, the person who referred them. If there is nothing specific to reference, the case file is incomplete.
 
 ## Rule 3 — Match length to the medium
 
@@ -41,14 +39,14 @@ Not: "Let me know if you have any questions."
 Yes: "Are you free Saturday morning for a showing? I can confirm the slot now."
 
 Not: "Feel free to reach out anytime."
-Yes: "I'll send you 3 Mueller listings by end of day. Take a look and tell me which ones are worth seeing."
+Yes: "I'll send you 3 Magnolia listings by end of day. Take a look and tell me which ones are worth seeing."
 
 The next step must be specific: a time, a property, a document, a decision.
 
-## Rule 5 — Apply the Diana test before delivering
+## Rule 5 — Apply the Denise HTR test before delivering
 
 Before producing the final draft, ask:
-> Could this message be sent unchanged by a competing Austin real estate agent?
+> Could this message be sent unchanged by a competing Houston-area real estate agent?
 
 If yes — rewrite. It is not specific, personal, or honest enough.
 
@@ -57,13 +55,13 @@ If yes — rewrite. It is not specific, personal, or honest enough.
 Banned commitments:
 - "We should be able to get you into something by August" (promise on timeline)
 - "I think we can get close to your price" (promise on outcome)
-- "This neighbourhood is only going up" (market prediction)
+- "This neighborhood is only going up" (market prediction)
 - "You'll love it" (subjective claim before they've seen it)
 
 Allowed language:
 - "Let's talk about what a realistic timeline looks like for your situation."
 - "The market data will tell us where to price — let me get you the comps."
-- "Most of my buyers in that range find a good fit within 6–10 weeks."
+- "Let's look at what's actually available in your range and go from there."
 
 ## Rule 7 — Format the output for easy agent review
 
@@ -86,4 +84,23 @@ NOTES FOR AGENT:
 - [Optional variations if tone is uncertain]
 ```
 
-The agent should be able to copy, adjust the one optional field, and send. Minimal friction.
+Signatures (phone is always the brokerage line, (832) 661-0475):
+
+```
+Denise Frank
+Broker, Hometown Realtors of Texas LLC
+(832) 661-0475
+denise@hometownrealtorsoftexas.com
+hometownrealtorsoftexas.com
+```
+
+```
+Keith Knowlton
+Hometown Realtors of Texas LLC
+(832) 661-0475
+keith@hometownrealtorsoftexas.com
+```
+
+Texts use the short sign-off defined in the voice profile, with (832) 661-0475 where a number is included.
+
+The agent should be able to copy, adjust the one optional field, and send. Minimal friction. You never send.

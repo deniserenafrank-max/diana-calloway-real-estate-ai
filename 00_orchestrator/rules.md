@@ -27,7 +27,7 @@
    | If the request is... | Route to |
    |---|---|
    | A new lead (any source, any type) | 01_lead_qualifier |
-   | A question about a specific property or neighbourhood | 02_property_research |
+   | A question about a specific property or neighborhood | 02_property_research |
    | A request to draft an email, text, or follow-up | 03_client_communication |
    | A deal that is under contract | 04_transaction_coordinator |
    | A lead that isn't ready yet and needs ongoing contact | 05_nurture_coordinator |
