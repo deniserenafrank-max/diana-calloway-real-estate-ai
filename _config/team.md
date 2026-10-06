@@ -52,7 +52,8 @@ Diana's mobile: **(512) 555-0100**
 
 ```
 sheet_name: Diana's Team Pipeline
-sheet_url: [populated during onboarding Step 3]
+sheet_id: 1tS5wb-WN7zmPpmLMY9cf093hlRl2v07mgq6Yrm0GCbA
+sheet_url: https://docs.google.com/spreadsheets/d/1tS5wb-WN7zmPpmLMY9cf093hlRl2v07mgq6Yrm0GCbA/edit
 columns: case_id | date | source | prospect_name | contact | lead_type | assigned_agent | urgency | status | next_action | draft_ready | notes | closed_date
 ```
 
