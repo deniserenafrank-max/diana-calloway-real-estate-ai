@@ -3,18 +3,22 @@
 
 ---
 
-## SYSTEM STATUS: NOT_CONFIGURED
+## SYSTEM STATUS: OPERATIONAL ✅
+Configured: 2026-10-06
+Agency: Hometown Realtors of Texas LLC
+Gmail inbox: leads@hometownrealtorsoftexas.com (connected account: denise@hometownrealtorsoftexas.com)
+Drive pipeline: 1tS5wb-WN7zmPpmLMY9cf093hlRl2v07mgq6Yrm0GCbA (sheet writes need the Google Sheets connector with spreadsheet permission; until then rows go to _shared/pipeline.csv)
+Routines: denise-htr-lead-processor (hourly, Mon–Fri 7am–9pm CT) · denise-htr-lead-processor-weekend (hourly, Sat–Sun 8am–6pm CT) · denise-htr-daily-briefing (daily 7:56am CT)
+Team: Denise Frank · Keith Knowlton
+Reset: delete the STATUS block and re-run to restart onboarding.
 <!-- Do not edit this block manually. Claude updates it as onboarding steps complete. -->
-<!-- ONBOARDING_STEPS_COMPLETE: 5/6 -->
+<!-- ONBOARDING_STEPS_COMPLETE: 6/6 -->
 <!-- gmail_connected: true — denise@hometownrealtorsoftexas.com (verified 2026-10-06) -->
-<!-- shared_inbox: true — leads@hometownrealtorsoftexas.com (test email received 2026-10-06; delivers to denise@ inbox) -->
+<!-- shared_inbox: true — leads@hometownrealtorsoftexas.com (external test email received 2026-10-06; delivers to denise@ inbox) -->
 <!-- drive_connected: true — pipeline sheet 1tS5wb-WN7zmPpmLMY9cf093hlRl2v07mgq6Yrm0GCbA (verified 2026-10-06) -->
 <!-- team_configured: true — Hometown Realtors of Texas, Denise Frank + Keith Knowlton (2026-10-06) -->
-<!-- routine_created: true — scheduled tasks created 2026-10-06 with Gmail + Google Drive + Google Sheets attached: denise-htr-lead-processor trig_01X8y2hpMTA8zNENPkZ13fbg, denise-htr-lead-processor-weekend trig_01E1VEHcFdMnNJDzyXsUFcTW, denise-htr-daily-briefing trig_019NDy2HxLeRYcDVLsEFuHaY. Older diana-* tasks are superseded; see _setup/routines/README.md. -->
-<!-- test_passed: false -->
-
-**If you are seeing this, run onboarding before using the system.**
-Open Claude Code (desktop app or web) in this folder and say: "start onboarding"
+<!-- routine_created: true — denise-htr-lead-processor trig_01X8y2hpMTA8zNENPkZ13fbg, denise-htr-lead-processor-weekend trig_01E1VEHcFdMnNJDzyXsUFcTW, denise-htr-daily-briefing trig_019NDy2HxLeRYcDVLsEFuHaY; Gmail + Google Drive + Google Sheets attached (2026-10-06) -->
+<!-- test_passed: true — 2026-10-06 11:36 CT: mock Zillow lead → case 2026-001-denise-alvarez, draft r-3725808623681190965 in Denise's Drafts, Processed label applied, pipeline row in _shared/pipeline.csv (Sheets write skipped: connector lacks spreadsheet scope) -->
 
 ---
 <!-- ================================================================
@@ -36,16 +40,7 @@ Do not skip steps. Do not proceed to OPERATIONAL until all 6 pass.
      Claude reads the routing table and acts immediately.
      ================================================================ -->
 
-<!--
-## SYSTEM STATUS: OPERATIONAL ✅
-Configured: [DATE]
-Agency: Hometown Realtors of Texas LLC
-Gmail inbox: leads@hometownrealtorsoftexas.com
-Drive pipeline: 1tS5wb-WN7zmPpmLMY9cf093hlRl2v07mgq6Yrm0GCbA
-Routine: hourly, weekdays 7am–9pm / weekends 8am–6pm; briefing 7:56am daily
-Team: Denise Frank · Keith Knowlton
-Reset: delete the STATUS block and re-run to restart onboarding.
--->
+<!-- OPERATIONAL block is live at the top of this file. -->
 
 ---
 
