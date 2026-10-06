@@ -104,7 +104,7 @@ No other action required from you.
 1. What is your team's domain? (e.g. `hometownrealtorsoftexas.com`)
 2. What are your team members' names and email addresses?
 3. Who handles buyer leads primarily? Who handles listing leads?
-4. What phone number goes in drafted communications? (Hometown: (832) 661-0475)
+4. What phone number goes in drafted communications? (Hometown: (832) 662-0475)
 
 **How you know it worked:**
 Claude shows you the completed `_config/team.md` for review. You confirm.

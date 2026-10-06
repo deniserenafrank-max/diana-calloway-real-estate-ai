@@ -87,7 +87,7 @@ These are calibration samples written from the template's style rules. They are 
 ```
 Denise Frank
 Broker, Hometown Realtors of Texas LLC
-(832) 661-0475
+(832) 662-0475
 denise@hometownrealtorsoftexas.com
 hometownrealtorsoftexas.com
 ```

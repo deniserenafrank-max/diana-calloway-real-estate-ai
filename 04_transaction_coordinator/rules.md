@@ -61,7 +61,7 @@ When a hard stop condition is identified:
 🔴 HARD STOP — Denise required
 Transaction: [Case ID]
 Condition: [What triggered the hard stop]
-Action: Notify Denise Frank immediately — (832) 661-0475 / denise@hometownrealtorsoftexas.com
+Action: Notify Denise Frank immediately — (832) 662-0475 / denise@hometownrealtorsoftexas.com
 Do not proceed without Denise's direct involvement.
 ```
 

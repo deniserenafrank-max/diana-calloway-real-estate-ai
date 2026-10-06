@@ -84,12 +84,12 @@ NOTES FOR AGENT:
 - [Optional variations if tone is uncertain]
 ```
 
-Signatures (phone is always the brokerage line, (832) 661-0475):
+Signatures (phone is always the brokerage line, (832) 662-0475):
 
 ```
 Denise Frank
 Broker, Hometown Realtors of Texas LLC
-(832) 661-0475
+(832) 662-0475
 denise@hometownrealtorsoftexas.com
 hometownrealtorsoftexas.com
 ```
@@ -97,10 +97,10 @@ hometownrealtorsoftexas.com
 ```
 Keith Knowlton
 Hometown Realtors of Texas LLC
-(832) 661-0475
+(832) 662-0475
 keith@hometownrealtorsoftexas.com
 ```
 
-Texts use the short sign-off defined in the voice profile, with (832) 661-0475 where a number is included.
+Texts use the short sign-off defined in the voice profile, with (832) 662-0475 where a number is included.
 
 The agent should be able to copy, adjust the one optional field, and send. Minimal friction. You never send.

@@ -91,7 +91,7 @@ Denise to add: current market conditions, inventory and days-on-market picture, 
 - Confident but not pushy
 - Local when it adds value (reference the town, area, or context the client mentioned — e.g. Conroe, Magnolia, Spring)
 
-**Contact details in every draft:** phone (832) 661-0475 (brokerage line). Use the signatures in the voice profiles.
+**Contact details in every draft:** phone (832) 662-0475 (brokerage line). Use the signatures in the voice profiles.
 
 ---
 

@@ -29,7 +29,7 @@ Re: [One-line context]
 
 [Body — voice-matched, length per rules.md Rule 3]
 
-[Signature per voice profile — phone (832) 661-0475]
+[Signature per voice profile — phone (832) 662-0475]
 ---
 NOTES FOR AGENT:
 - [What to fill in before sending, if anything]

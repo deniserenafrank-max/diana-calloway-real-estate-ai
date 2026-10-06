@@ -25,7 +25,7 @@ Re: 1234 Example Oak Dr, Conroe — tour request
 Hi Sarah — Denise Frank with Hometown Realtors of Texas. 1234 Example Oak is still on the market.
 Saturday works — morning or afternoon? I can get you in.
 
-— Denise | (832) 661-0475
+— Denise | (832) 662-0475
 ---
 NOTES FOR AGENT:
 - Send within 5 minutes of receiving this draft — Zillow 5-min SLA
@@ -72,7 +72,7 @@ or Friday afternoon look like?
 
 Keith Knowlton
 Hometown Realtors of Texas LLC
-(832) 661-0475
+(832) 662-0475
 keith@hometownrealtorsoftexas.com
 ---
 NOTES FOR AGENT:
@@ -122,7 +122,7 @@ Take your time. I'm here when you're ready.
 
 Denise Frank
 Broker, Hometown Realtors of Texas LLC
-(832) 661-0475
+(832) 662-0475
 denise@hometownrealtorsoftexas.com
 hometownrealtorsoftexas.com
 ---
@@ -159,7 +159,7 @@ Good news — the seller agreed to the $1,200 credit at closing to cover the ins
 Your option period ends Friday. We're on track. I'll send a full update email with the
 next steps and closing timeline by end of day.
 
-— Denise | (832) 661-0475
+— Denise | (832) 662-0475
 ---
 NOTES FOR AGENT:
 - Send the email update by EOD as promised — use 04_transaction_coordinator for checklist content

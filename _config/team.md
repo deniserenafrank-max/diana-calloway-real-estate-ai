@@ -19,10 +19,10 @@ admin: denise@hometownrealtorsoftexas.com         # Google Workspace admin + con
 
 | Name | Role | Email | Phone |
 |---|---|---|---|
-| Denise Frank | Broker / lead agent | denise@hometownrealtorsoftexas.com | (832) 661-0475 |
-| Keith Knowlton | Agent | keith@hometownrealtorsoftexas.com | (832) 661-0475 |
+| Denise Frank | Broker / lead agent | denise@hometownrealtorsoftexas.com | (832) 662-0475 |
+| Keith Knowlton | Agent | keith@hometownrealtorsoftexas.com | (832) 662-0475 |
 
-Phone note: (832) 661-0475 is the Hometown Realtors of Texas brokerage line
+Phone note: (832) 662-0475 is the Hometown Realtors of Texas brokerage line
 (it is not the Follow Up Boss number and not a personal mobile). Use it as the
 contact number in every drafted client reply and every signature. Do not use
 any other number (older numbers are retired).
@@ -55,7 +55,7 @@ Any of these situations: pull Denise in immediately.
 - Legal ambiguity (boundary, title, undisclosed defects)
 - Any media inquiry
 
-Denise's number: **(832) 661-0475** (brokerage line)
+Denise's number: **(832) 662-0475** (brokerage line)
 
 ---
 
