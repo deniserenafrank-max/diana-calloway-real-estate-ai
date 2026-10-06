@@ -1,0 +1,2 @@
+case_id,date,source,prospect_name,contact,lead_type,assigned_agent,urgency,status,next_action,draft_ready,notes,closed_date
+2026-001-denise-alvarez,2026-10-06,Zillow - Contact Agent,Maria Alvarez,(936) 555-0147 / maria.alvarez.testlead@example.com,Buyer,Denise Frank,MEDIUM,New,"Review/send Gmail draft; call Maria Wed or Thu afternoon re Conroe vs Montgomery, ~$450k, 4 BR; confirm pre-approval amount",Yes,ONBOARDING TEST LEAD. Score 10/12 Priority. Relocation from Dallas; January target. Draft id r-3725808623681190965,
