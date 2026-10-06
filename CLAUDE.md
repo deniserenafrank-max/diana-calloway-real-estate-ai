@@ -3,22 +3,22 @@
 
 ---
 
-## SYSTEM STATUS: NOT_CONFIGURED
+## SYSTEM STATUS: ONBOARDING_IN_PROGRESS
 <!-- Do not edit this block manually. Claude updates it as onboarding steps complete. -->
-<!-- ONBOARDING_STEPS_COMPLETE: 0/6 -->
-<!-- gmail_connected: false -->
+<!-- ONBOARDING_STEPS_COMPLETE: 2/6 -->
+<!-- gmail_connected: true (denise.rena.frank@gmail.com, verified 2026-10-06) -->
 <!-- shared_inbox: false -->
-<!-- drive_connected: false -->
+<!-- drive_connected: true (pipeline sheet created 2026-10-06, URL in _config/team.md) -->
 <!-- team_configured: false -->
 <!-- routine_created: false -->
 <!-- test_passed: false -->
 
-**If you are seeing this, run onboarding before using the system.**
-Open Claude Code (desktop app or web) in this folder and say: "start onboarding"
+**Onboarding is in progress (steps 1 and 3 done). To resume, say: "continue onboarding"**
+Remaining: 2a shared lead inbox, 2b forwarding filters, 4 team config, 5 routines, 6 test run.
 
 ---
 <!-- ================================================================
-     ONBOARDING MODE — active when STATUS is NOT_CONFIGURED
+     ONBOARDING MODE — active when STATUS is NOT_CONFIGURED or ONBOARDING_IN_PROGRESS
      Claude reads this section and runs the wizard step by step.
      Each step updates the block above on completion.
      Once all 6 steps pass, Claude rewrites STATUS to OPERATIONAL.
