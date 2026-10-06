@@ -5,12 +5,12 @@
 
 ## SYSTEM STATUS: NOT_CONFIGURED
 <!-- Do not edit this block manually. Claude updates it as onboarding steps complete. -->
-<!-- ONBOARDING_STEPS_COMPLETE: 0/6 -->
-<!-- gmail_connected: false -->
-<!-- shared_inbox: false -->
-<!-- drive_connected: false -->
-<!-- team_configured: false -->
-<!-- routine_created: false -->
+<!-- ONBOARDING_STEPS_COMPLETE: 5/6 -->
+<!-- gmail_connected: true — denise@hometownrealtorsoftexas.com (verified 2026-10-06) -->
+<!-- shared_inbox: true — leads@hometownrealtorsoftexas.com (test email received 2026-10-06; delivers to denise@ inbox) -->
+<!-- drive_connected: true — pipeline sheet 1tS5wb-WN7zmPpmLMY9cf093hlRl2v07mgq6Yrm0GCbA (verified 2026-10-06) -->
+<!-- team_configured: true — Hometown Realtors of Texas, Denise Frank + Keith Knowlton (2026-10-06) -->
+<!-- routine_created: true — diana-lead-processor trig_01J9igYYQTfv7Nm3gwVG4Pdy, diana-lead-processor-weekend trig_01KcjNvrvQpjM86xTdFUD5Fs, diana-daily-briefing trig_01AVLy24KpyohtetEnZa45Gx (2026-10-06; DISABLED until Gmail + Drive connectors are attached in claude.ai Routines — test fire confirmed no Gmail tools) -->
 <!-- test_passed: false -->
 
 **If you are seeing this, run onboarding before using the system.**
