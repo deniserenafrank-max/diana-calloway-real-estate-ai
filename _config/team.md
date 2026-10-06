@@ -1,5 +1,5 @@
-# Team Configuration — Diana Calloway Real Estate
-*Written by Claude during onboarding Step 4.*
+# Team Configuration — Hometown Realtors of Texas
+*Written by Claude during onboarding Step 4 (2026-10-06).*
 *Edit here if team details change. All specialists load this file.*
 
 ---
@@ -7,20 +7,23 @@
 ## Domain
 
 ```
-domain: dianacalloway.com
-leads_inbox: leads@dianacalloway.com
+agency: Hometown Realtors of Texas
+domain: hometownrealtorsoftexas.com
+leads_inbox: leads@hometownrealtorsoftexas.com   # Google Workspace group; delivers to denise@
+admin: denise@hometownrealtorsoftexas.com         # Google Workspace admin + connected Gmail account
 ```
 
 ---
 
 ## Team members
 
-| Name | Role | Email | Mobile |
+| Name | Role | Email | Phone |
 |---|---|---|---|
-| Diana Calloway | Owner / Lead agent | diana@dianacalloway.com | (512) 555-0100 |
-| Marcus Webb | Buyer specialist | marcus@dianacalloway.com | (512) 555-0101 |
-| Priya Nair | Listing coordinator / marketing | priya@dianacalloway.com | (512) 555-0102 |
-| Jordan Kim | Junior agent | jordan@dianacalloway.com | (512) 555-0103 |
+| Denise Frank | Broker / lead agent | denise@hometownrealtorsoftexas.com | (832) 662-0475 |
+| Keith Knowlton | Agent | keith@hometownrealtorsoftexas.com | (832) 662-0475 |
+
+Phone note: (832) 662-0475 is the team's Follow Up Boss number. Use it as the
+contact number in every drafted client reply. It is not a personal mobile.
 
 ---
 
@@ -28,23 +31,29 @@ leads_inbox: leads@dianacalloway.com
 
 | Lead type | Default agent | Notes |
 |---|---|---|
-| Buyer leads | Marcus Webb | Diana handles $1.5M+ buyers only |
-| Listing / seller leads | Priya Nair | Diana handles all listing presentations in person |
-| Personal referrals | Diana Calloway | Diana calls all referrals within 2 hours |
-| Junior pipeline | Jordan Kim | Flag to Marcus or Priya if complex |
+| Buyer leads | Denise Frank | Denise handles all buyers by default |
+| Listing / seller leads | Denise Frank | Denise handles all listings by default |
+| Personal referrals | Denise Frank | Denise calls referrals directly |
+| Overflow / assist | Keith Knowlton | Only when Denise reassigns in the case file |
+
+Voice profiles: `_shared/voices/` currently holds the template agents only
+(diana, marcus, priya, jordan). Until `denise.md` and `keith.md` exist, the
+Client Communication specialist uses `diana.md` as the lead-agent voice for
+Denise and `marcus.md` for Keith. Replace these with real voice profiles
+before relying on drafts for tone.
 
 ---
 
 ## Hard stop contacts
 
-Any of these situations: pull Diana in immediately.
+Any of these situations: pull Denise in immediately.
 - Offer above $1.2M
 - Divorce, estate, or foreclosure
 - Client threatening to leave
 - Legal ambiguity (boundary, title, undisclosed defects)
 - Any media inquiry
 
-Diana's mobile: **(512) 555-0100**
+Denise's number: **(832) 662-0475**
 
 ---
 
@@ -56,6 +65,23 @@ sheet_id: 1tS5wb-WN7zmPpmLMY9cf093hlRl2v07mgq6Yrm0GCbA
 sheet_url: https://docs.google.com/spreadsheets/d/1tS5wb-WN7zmPpmLMY9cf093hlRl2v07mgq6Yrm0GCbA/edit
 columns: case_id | date | source | prospect_name | contact | lead_type | assigned_agent | urgency | status | next_action | draft_ready | notes | closed_date
 ```
+
+---
+
+## Personal inbox forwarding (Step 2b)
+
+Each team member creates one Gmail filter (Settings → Filters → Create new filter):
+
+```
+-from:(@hometownrealtorsoftexas.com) (buy OR sell OR property OR listing OR interested OR "looking for" OR "home search" OR realtor OR agent OR showing OR offer)
+```
+
+Actions: Skip inbox · Apply label "Potential Lead" · Forward to leads@hometownrealtorsoftexas.com
+
+| Member | Filter set |
+|---|---|
+| Denise | pending |
+| Keith | pending |
 
 ---
 
