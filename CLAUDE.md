@@ -10,7 +10,7 @@
 <!-- shared_inbox: true — leads@hometownrealtorsoftexas.com (test email received 2026-10-06; delivers to denise@ inbox) -->
 <!-- drive_connected: true — pipeline sheet 1tS5wb-WN7zmPpmLMY9cf093hlRl2v07mgq6Yrm0GCbA (verified 2026-10-06) -->
 <!-- team_configured: true — Hometown Realtors of Texas, Denise Frank + Keith Knowlton (2026-10-06) -->
-<!-- routine_created: true — scheduled tasks created 2026-10-06 with Gmail + Google Drive attached: diana-lead-processor trig_0121KPGDonoCPoehq62WnAUc, diana-lead-processor-weekend trig_01VJALu8DmQyg49sT8Pk3aDa, diana-daily-briefing trig_01KRKyeyjfh68cDwQhVci3aK. Earlier disabled set (trig_01J9igYYQTfv7Nm3gwVG4Pdy, trig_01KcjNvrvQpjM86xTdFUD5Fs, trig_01AVLy24KpyohtetEnZa45Gx) should be deleted in claude.ai Routines. -->
+<!-- routine_created: true — scheduled tasks created 2026-10-06 with Gmail + Google Drive + Google Sheets attached: denise-htr-lead-processor trig_01X8y2hpMTA8zNENPkZ13fbg, denise-htr-lead-processor-weekend trig_01E1VEHcFdMnNJDzyXsUFcTW, denise-htr-daily-briefing trig_019NDy2HxLeRYcDVLsEFuHaY. Older diana-* tasks are superseded; see _setup/routines/README.md. -->
 <!-- test_passed: false -->
 
 **If you are seeing this, run onboarding before using the system.**
