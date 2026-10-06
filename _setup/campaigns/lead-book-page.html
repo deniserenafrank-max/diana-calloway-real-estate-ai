@@ -95,6 +95,23 @@ button { cursor: pointer; }
 .planbox { display: grid; gap: 6px; background: var(--surface); border: 1px solid var(--line); border-left: 3px solid var(--accent); border-radius: 8px; padding: 10px 12px; font-size: 14px; }
 .planbox ol { margin: 0; padding-left: 20px; }
 .done-step { color: var(--muted); text-decoration: line-through; }
+.snap { display: flex; flex-wrap: wrap; gap: 4px 10px; font-size: 12px; color: var(--muted); }
+.snap.replied span:first-child { color: var(--ok); font-weight: 600; }
+.snap-n { font-family: var(--f-mono); }
+.commsbox { display: grid; gap: 8px; }
+.comms { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+.cm { background: var(--surface); border: 1px solid var(--line); border-left: 3px solid var(--line); border-radius: 8px; padding: 8px 10px; display: grid; gap: 2px; font-size: 14px; }
+.cm.in { border-left-color: var(--ok); }
+.cm.out { border-left-color: var(--accent); }
+.cm.draft { border-left-style: dashed; }
+.cm-head { display: flex; justify-content: space-between; gap: 8px; font-size: 12px; color: var(--muted); }
+.cm-kind { font-weight: 600; }
+.cm-head time { font-family: var(--f-mono); white-space: nowrap; }
+.cm-subj { font-weight: 600; overflow-wrap: anywhere; }
+.cm-sum { color: var(--ink); overflow-wrap: anywhere; white-space: pre-line; }
+.logform { display: grid; grid-template-columns: auto auto minmax(0, 1fr) auto; gap: 6px; }
+.logform select, .logform input { font-size: 14px; border: 1px solid var(--line); background: var(--surface); border-radius: 7px; padding: 6px 8px; min-width: 0; }
+@media (max-width: 560px) { .logform { grid-template-columns: 1fr 1fr; } .logform input { grid-column: 1 / -1; } }
 .note { font-size: 13px; color: var(--muted); max-width: 65ch; }
 /* Sheet */
 .shade { position: fixed; inset: 0; background: var(--shade); z-index: 10; }
@@ -234,6 +251,19 @@ textarea { resize: vertical; min-height: 64px; }
     if (c.nextTouch <= addDays(TODAY, 3)) return el("span", { class: "pill soon", text: "Follow up " + nice(c.nextTouch) });
     return el("span", { class: "pill plain", text: "Follow up " + nice(c.nextTouch) });
   }
+  // Communication history: c.comms = [{at:"YYYY-MM-DDTHH:MM", dir:"in"|"out"|"draft"|"note", ch:"email"|"call"|"text"|"har"|"fub"|"note", subject, summary, ref}]
+  const CH = { email: "Email", call: "Call", text: "Text", har: "HAR inquiry", fub: "Follow Up Boss email", note: "Note" };
+  const DIR = { in: "From them", out: "To them", draft: "Draft", note: "Note" };
+  const commsOf = c => (c.comms || []).slice().sort((a, b) => (b.at || "").localeCompare(a.at || ""));
+  const atNice = at => { if (!at) return ""; const [d, t] = at.split("T"); return nice(d) + (t ? " " + new Date("2000-01-01T" + t).toLocaleTimeString(undefined, { hour: "numeric", minute: "2-digit" }) : ""); };
+  function snapshot(c) {
+    const cm = commsOf(c);
+    if (!cm.length) return null;
+    const last = cm[0];
+    const nin = cm.filter(x => x.dir === "in").length, nout = cm.filter(x => x.dir === "out").length;
+    const lastTxt = (last.dir === "in" ? "\u2190 " : last.dir === "out" ? "\u2192 " : "") + (CH[last.ch] || last.ch) + (last.subject ? ": " + last.subject : "") + " \u00b7 " + atNice(last.at);
+    return { lastTxt, counts: nout + " out \u00b7 " + nin + " in", replied: last.dir === "in" };
+  }
   const urgRank = u => ({ CRITICAL: 0, HIGH: 1, MEDIUM: 2, STANDARD: 3 })[u] ?? 4;
   const firstDate = c => [c.nextTouch, c.stepDue].filter(Boolean).sort()[0] || "9999";
   const sortFn = (a, b) => firstDate(a).localeCompare(firstDate(b)) || urgRank(a.urgency) - urgRank(b.urgency) || (a.name || "").localeCompare(b.name || "");
@@ -266,7 +296,8 @@ textarea { resize: vertical; min-height: 64px; }
         el("span", { class: "who" }, [
           el("span", { class: "name" }, [c.name || "Unnamed", el("span", { class: "pill plain", text: c.stage || "New" })]),
           el("span", { class: "meta", text: [c.leadType, c.property, c.source].filter(Boolean).join(" · ") }),
-          c.nextAction ? el("span", { class: "next", text: c.nextAction }) : null
+          c.nextAction ? el("span", { class: "next", text: c.nextAction }) : null,
+          (() => { const sn = snapshot(c); return sn ? el("span", { class: "snap" + (sn.replied ? " replied" : "") }, [el("span", { text: sn.lastTxt }), el("span", { class: "snap-n", text: sn.counts })]) : null; })()
         ]),
         el("span", { class: "when" }, [
           whenPill(c),
@@ -400,6 +431,30 @@ textarea { resize: vertical; min-height: 64px; }
       p && canWrite ? el("div", {}, [el("button", { class: "btn", type: "button", text: "Stop this plan", onclick: stopPlan })]) : null
     ]) : el("p", { class: "note", style: "margin:0", text: "A new contact starts at stage New, which runs “1 - Houston Rentals - NEW Lead” on the next hourly run." });
 
+    const logType = el("select", { id: "f-logtype" }, [["call", "Call"], ["text", "Text"], ["email", "Email (sent outside Gmail)"], ["note", "Note"]].map(([v, t]) => el("option", { value: v, text: t })));
+    const logDir = el("select", { id: "f-logdir" }, [["out", "I reached out"], ["in", "They reached out"]].map(([v, t]) => el("option", { value: v, text: t })));
+    const logText = el("input", { id: "f-logtext", type: "text", placeholder: "What happened? e.g. Left voicemail, set tour Sat 10am" });
+    async function addComm() {
+      const summary = logText.value.trim();
+      if (!summary) return say("Write a short note about the call, text or email first.", true);
+      const now = new Date(); const at = iso(now) + "T" + pad(now.getHours()) + ":" + pad(now.getMinutes());
+      const ch = logType.value, dir = ch === "note" ? "note" : logDir.value;
+      const entry = { at, dir, ch, summary, by: "manual" };
+      const patch = { comms: [entry].concat(c.comms || []).slice(0, 150) };
+      if (dir === "out") patch.lastContact = iso(now);
+      try { await db.doc("contacts/" + c.id).update(patch); reopen("Added to history."); } catch (e) { fail(e); }
+    }
+    const cm = isNewRec ? [] : commsOf(c);
+    const commsBox = !isNewRec ? el("div", { class: "commsbox" }, [
+      el("div", { class: "eyebrow", text: "Communication history" + (cm.length ? " (" + cm.length + ")" : "") }),
+      cm.length ? el("ol", { class: "comms" }, cm.map(x => el("li", { class: "cm " + (x.dir || "") }, [
+        el("div", { class: "cm-head" }, [el("span", { class: "cm-kind", text: (DIR[x.dir] || "") + " \u00b7 " + (CH[x.ch] || x.ch || "") }), el("time", { text: atNice(x.at) })]),
+        x.subject ? el("div", { class: "cm-subj", text: x.subject }) : null,
+        x.summary ? el("div", { class: "cm-sum", text: x.summary }) : null
+      ]))) : el("p", { class: "muted", style: "margin:0;font-size:14px", text: "No emails, calls or texts recorded yet. Emails to and from this person are added by the hourly check." }),
+      canWrite ? el("div", { class: "logform" }, [logType, logDir, logText, el("button", { class: "btn", type: "button", text: "Add", onclick: addComm })]) : null
+    ]) : null;
+
     sheet.replaceChildren(
       el("div", { class: "sheet-head" }, [
         el("div", {}, [el("div", { class: "eyebrow", text: isNewRec ? "New contact" : [c.stage, c.caseId].filter(Boolean).join(" · ") }), el("h2", { text: c.name || "Add a contact" })]),
@@ -412,11 +467,12 @@ textarea { resize: vertical; min-height: 64px; }
         el("button", { class: "btn", type: "button", text: "In 1 week", onclick: () => snooze(7) })
       ]) : null,
       !isNewRec && c.draftId && !c.lastContact ? el("p", { class: "note", style: "margin:0", text: "A reply draft is waiting in your Gmail Drafts. Send it, then tap Mark contacted today." }) : null,
+      commsBox,
       planBox,
       form,
       canWrite ? el("div", { class: "quick" }, [el("button", { class: "btn primary", type: "button", text: isNewRec ? "Add contact" : "Save changes", onclick: save })]) : null,
       status,
-      !isNewRec && (c.log || []).length ? el("div", {}, [el("div", { class: "eyebrow", text: "History", style: "margin-bottom:6px" }), el("div", { class: "log" }, (c.log || []).map(l => el("div", {}, [el("time", { text: nice(l.d) }), el("span", { text: l.t })])))]) : null,
+      !isNewRec && (c.log || []).length ? el("div", {}, [el("div", { class: "eyebrow", text: "System log", style: "margin-bottom:6px" }), el("div", { class: "log" }, (c.log || []).map(l => el("div", {}, [el("time", { text: nice(l.d) }), el("span", { text: l.t })])))]) : null,
       !isNewRec && canWrite ? delWrap : null
     );
     sheet.hidden = false; shade.hidden = false;

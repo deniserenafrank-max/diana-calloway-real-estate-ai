@@ -10,7 +10,7 @@ The hourly lead processor follows this file. It copies Denise's Follow Up Boss a
 
 ## Contact fields
 
-caseId, name, phone, email, leadType, source, property, stage, urgency, nextTouch (Denise's own follow-up date), nextAction, notes, draftId, created, lastContact, log (newest first, keep 60), plus the plan fields:
+caseId, name, phone, email, leadType, source, property, stage, urgency, nextTouch (Denise's own follow-up date), nextAction, notes, draftId, created, lastContact, log (system events, newest first, keep 60), comms (communication history, see section E), plus the plan fields:
 
 - `plan`: id of the running plan, or null
 - `planStep`: index of the next step to run
@@ -25,7 +25,7 @@ caseId, name, phone, email, leadType, source, property, stage, urgency, nextTouc
    - **Rental leads** (lead type Rental inquiry, e.g. HAR / Progress Residential rentals): start plan `rental-new` (planStep 0, planStarted today, stepDue today). Log "Lead came in from <source>" and "Action plan started: 1 - Houston Rentals - NEW Lead". Step 7 of the lead processor has already drafted this plan's Day 0 template email (instead of a personalized reply): record that draft as done (draftId, log "Drafted: Your rental home inquiry", planStep 1) so it is never drafted twice. Then run the remaining due steps now (section B), which changes the stage to Active.
    - **Buyer, seller and other leads**: no plan yet (the buying plans have not been copied from Follow Up Boss). Keep the personalized first reply from step 7. Log "Lead came in from <source>".
 
-## B. Run due steps (every run, for every contact)
+## B. Run due steps (every run, for every contact), then section E
 
 `query` contacts where `stepDue` <= today. For each, starting at `planStep`, run each step whose day (planStarted + day) is <= today, in order:
 
@@ -48,6 +48,16 @@ Read the step's template files. The comment at the top of the `.html` file gives
 Every draft uses (832) 662-0475 as the phone number.
 
 Address every draft to the contact's email; if there is no email, skip the draft and set nextAction "No email on file: call instead".
+
+## E. Communication history (every run, after section B)
+
+Each contact's `comms` array is its communication history, shown on the Lead Book. Entry: `{"at": "YYYY-MM-DDTHH:MM" (America/Chicago), "dir": "in" | "out" | "draft" | "note", "ch": "email" | "call" | "text" | "har" | "fub" | "note", "subject", "summary" (one line, under 250 characters), "ref" (Gmail message, thread or draft id)}`. Keep the newest 150. Never add an entry whose `ref` is already there.
+
+1. Whenever this run creates a draft, sends an email or reads a new lead email for a contact, add the matching entry (draft / out / in; HAR notifications are `ch: "har"`).
+2. Sync Gmail: for every contact not Closed or Lost that has an email, `search_threads` with `(from:<email> OR to:<email>) newer_than:3d -in:draft`. For each message not already recorded: `dir` "in" if the contact sent it, else "out"; subject; a one-line summary. For a reply that answers the rental questions, put the answers in the summary (move-in, area, budget, beds/baths, pets, applicants, evictions, 3x income, credit 600+, bankruptcies, voucher).
+3. A reply that quotes an email "Denise Frank <denise@hometownrealtorsoftexas.com> wrote:" that is not in Gmail Sent was sent by Follow Up Boss: add it once as `dir: "out", ch: "fub"` with the quoted date and subject.
+4. When a new "in" email arrives: set `nextTouch` to today, set `nextAction` to "Replied: <short summary>. Call <phone>." and add the answers to `notes`. When a new "out" email is found: set `lastContact` to that date.
+5. Batch these updates (one `update` per contact, with its `if_version`). List new replies in the run summary; replies are the most important thing for Denise to see.
 
 ## D. Summary
 
