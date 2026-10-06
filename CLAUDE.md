@@ -116,8 +116,8 @@ Determine source before routing. Source sets the SLA for Path C responses and fl
 | Realtor.com ReadyConnect | HIGH | Already pre-qualified | Lead was on the phone with Opcity concierge |
 | Zillow — "Contact Agent" | MEDIUM | 30 min | Info request — earlier stage |
 | Homes.com | MEDIUM | Same day | Higher volume, lower intent on average |
-| HAR.com — Showing Request | HIGH | 30 min | Arrives at denise.rena.frank@gmail.com under label INBOX/HAR Leads. Notification has no contact info: open View Lead Details in HAR, then call/text. Mostly rental listings (Progress Residential) with Denise copied. |
-| HAR.com — inquiry | MEDIUM | Same day | Same as above; no Gmail draft is possible from the notification alone. |
+| HAR.com — Showing Request | HIGH | 30 min | Arrives at denise.rena.frank@gmail.com under label INBOX/HAR Leads. Prospect email, phone and message are in hidden <meta name="lead_*"> tags in the HTML head; read them with a FULL_CONTENT fetch. Mostly rental listings (Progress Residential) with Denise copied. |
+| HAR.com — inquiry | MEDIUM | Same day | Same as above; draft a reply to lead_email like any other lead. |
 | Referral (personal) | HIGH | Same day, personal call | High trust — Denise or assigned agent calls directly |
 | Open house sign-in | STANDARD | Next business day | Batch entry — qualify before outreach |
 | Walk-in / phone call | HIGH | Immediate — agent is present | Path C only. Draft response before agent hangs up. |
