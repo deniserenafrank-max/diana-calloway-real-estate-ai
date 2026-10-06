@@ -5,16 +5,17 @@
 
 ## SYSTEM STATUS: ONBOARDING_IN_PROGRESS
 <!-- Do not edit this block manually. Claude updates it as onboarding steps complete. -->
-<!-- ONBOARDING_STEPS_COMPLETE: 2/6 -->
+<!-- ONBOARDING_STEPS_COMPLETE: 3/6 -->
 <!-- gmail_connected: true (denise.rena.frank@gmail.com, verified 2026-10-06) -->
 <!-- shared_inbox: false -->
 <!-- drive_connected: true (pipeline sheet created 2026-10-06, URL in _config/team.md) -->
-<!-- team_configured: false -->
+<!-- team_configured: true (hometownrealtorsoftexas.com, 2 agents, 2026-10-06) -->
 <!-- routine_created: false -->
 <!-- test_passed: false -->
 
-**Onboarding is in progress (steps 1 and 3 done). To resume, say: "continue onboarding"**
-Remaining: 2a shared lead inbox, 2b forwarding filters, 4 team config, 5 routines, 6 test run.
+**Onboarding is in progress (steps 1, 3 and 4 done). To resume, say: "continue onboarding"**
+Remaining: 2a shared lead inbox, 2b forwarding filters, 5 routines, 6 test run.
+Blocker: Gmail connector is linked to denise.rena.frank@gmail.com; must be reconnected as denise@hometownrealtorsoftexas.com.
 
 ---
 <!-- ================================================================
