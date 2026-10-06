@@ -7,7 +7,7 @@
 Configured: 2026-10-06
 Agency: Hometown Realtors of Texas LLC
 Gmail inbox: leads@hometownrealtorsoftexas.com (connected account: denise@hometownrealtorsoftexas.com)
-Drive pipeline: 1tS5wb-WN7zmPpmLMY9cf093hlRl2v07mgq6Yrm0GCbA (sheet writes need the Google Sheets connector with spreadsheet permission; until then rows go to _shared/pipeline.csv)
+Drive pipeline: 1tS5wb-WN7zmPpmLMY9cf093hlRl2v07mgq6Yrm0GCbA (Google Sheets connector verified read/write 2026-10-06; _shared/pipeline.csv is the backup copy)
 Routines: denise-htr-lead-processor (hourly, Mon–Fri 7am–9pm CT) · denise-htr-lead-processor-weekend (hourly, Sat–Sun 8am–6pm CT) · denise-htr-daily-briefing (daily 7:56am CT)
 Team: Denise Frank · Keith Knowlton
 Reset: delete the STATUS block and re-run to restart onboarding.
