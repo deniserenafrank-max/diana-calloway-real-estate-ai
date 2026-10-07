@@ -16,7 +16,7 @@ lead_type:      Rental inquiry
 assigned_agent: Denise Frank
 urgency:        HIGH
 status:         Active
-next_action:    Call Jasmine at (832) 375-9421 now about her showing request for 19523 Elmtree Estates Dr (Katy 77449); confirm showing setup with Progress, get days/times and move-in date. Send the rental template draft.
+next_action:    Call Jasmine at (832) 375-9421 now (she sent a second showing request at 1:20 PM) about her showing request for 19523 Elmtree Estates Dr (Katy 77449); confirm showing setup with Progress, get days/times and move-in date. Send the rental template draft.
 draft_ready:    Yes
 notes:          Progress Residential rental listing (HAR To: mls@rentprogress.com, Denise CC'd). MLS 36711957. HAR lead 10058098, generated 10/07 10:16 AM CT. No message in HAR lead. Timeline 1 / Budget 1 / Motivation 2 / Responsiveness 2 = 6/12 (Soft). Katy 77449 is outside the core Montgomery County service area. Day 0 template email from plan '1 - Houston Rentals - NEW Lead'. Draft id r626260276462542546.
 ```
@@ -29,7 +29,7 @@ notes:          Progress Residential rental listing (HAR To: mls@rentprogress.co
 |---|---|
 | case_id | 2026-020-denise-galvan |
 | created | 2026-10-07 11:10 CT |
-| last_updated | 2026-10-07 11:10 CT |
+| last_updated | 2026-10-07 14:10 CT |
 | status | Active |
 | lead_type | Rental inquiry |
 | source | HAR.com - Showing Request |
@@ -88,6 +88,7 @@ Do not state Progress Residential's rent, income requirement, fees, pet policy, 
 
 | Date | Agent | Channel | Summary |
 |---|---|---|---|
+| 2026-10-07 | System | HAR | Repeat HAR showing request for the same property (19523 Elmtree Estates Dr), HAR lead 10058450, generated 1:20 PM CT (message 1a117989c5ddf3eb), no message. Second request in 3 hours = stronger intent. No new draft (Day 0 template draft r626260276462542546 already exists; plan runs once). |
 | 2026-10-07 | System | HAR | HAR showing request received 10:16 AM CT; processed by hourly lead processor (11:10 CT run). Day 0 rental template draft created in Denise's Drafts. |
 
 ---
